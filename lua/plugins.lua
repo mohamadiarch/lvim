@@ -23,6 +23,7 @@ lvim.plugins={
 -- windows: ------> scoop bucket add extras  -----> scoop install code-minimap
 "wfxr/minimap.vim",  
 "petertriho/nvim-scrollbar",
+"wakatime/vim-wakatime",
 {
   "folke/flash.nvim",
   event = "VeryLazy",
@@ -31,6 +32,12 @@ lvim.plugins={
   -- stylua: ignore
   -- keys = {}, -- set in keymaps.lua
 },
+-- I think this plugin do not make me fast
+-- { "johmsalas/text-case.nvim",
+--   config = function()
+--     require('textcase').setup {}
+--   end
+-- },
 "Exafunction/codeium.vim",
   -- {
   --   "Exafunction/codeium.vim",

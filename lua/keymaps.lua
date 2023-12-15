@@ -7,8 +7,6 @@ vim.api.nvim_set_keymap("n", "qq", ":qa!", {}) -- press enter to exit
 vim.api.nvim_set_keymap("n", "wq", ":wqa!", {}) -- press enter to save and exit
 vim.api.nvim_set_keymap("i", "jj", "<ESC>", {}) -- press jj for nodrmal mode [a-o-i== insert mode]
 
-  
-
 
 -- Run Programs by space+r inside vim
 local function run_curr_python_file()
@@ -31,14 +29,18 @@ vim.keymap.set({'n'}, '<space>r', '', {
 
 -- flash.nvim
 wk.register({
+  s={
+    name = "Search",
+    a = { "<cmd>Telescope<cr>", "Telescope" },
+  },
   m={
+    -- flash in a plugin for motion and jumping
     name="me: flash",
     j={function() require('flash').jump() end, "flash jump"},
     t={function() require('flash').treesitter() end, "flash treesitter"},
     r={function() require('flash').treesitter_search() end, "flash treesitter search"},
   }
 },{prefix = "<leader>"})
-
 
 
 

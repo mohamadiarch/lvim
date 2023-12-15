@@ -5,20 +5,20 @@ require("telescope").load_extension "file_browser"
 require'telescope'.load_extension('project')
 
 
-vim.api.nvim_set_keymap(
-  "n",
-  "<space>b",
-  ":Telescope file_browser<CR>",
-  { noremap = true }
-)
+-- vim.api.nvim_set_keymap(
+--   "n",
+--   "<space>b",
+--   ":Telescope file_browser<CR>",
+--   { noremap = true }
+-- )
 
--- open file_browser with the path of the current buffer
-vim.api.nvim_set_keymap(
-  "n",
-  "<space>b",
-  ":Telescope file_browser path=%:p:h select_buffer=true<CR>",
-  { noremap = true }
-)
+-- -- open file_browser with the path of the current buffer
+-- vim.api.nvim_set_keymap(
+--   "n",
+--   "<space>b",
+--   ":Telescope file_browser path=%:p:h select_buffer=true<CR>",
+--   { noremap = true }
+-- )
 
 -- see markdown inside neovim
 require('glow').setup({
@@ -30,7 +30,9 @@ require('glow').setup({
 require("scrollbar").setup()
 
 
-
+-- Add a new command
+-- require("commander").setup()
+-- Show commander and select the command by pressing "<leader>fc"
 
 
 
