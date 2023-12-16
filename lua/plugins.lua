@@ -23,7 +23,9 @@ lvim.plugins={
 -- windows: ------> scoop bucket add extras  -----> scoop install code-minimap
 "wfxr/minimap.vim",  
 "petertriho/nvim-scrollbar",
+"nvim-treesitter/playground",
 "wakatime/vim-wakatime",
+"dkarter/bullets.vim",
 {
   "folke/flash.nvim",
   event = "VeryLazy",

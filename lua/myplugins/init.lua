@@ -30,9 +30,6 @@ require('glow').setup({
 require("scrollbar").setup()
 
 
--- Add a new command
--- require("commander").setup()
--- Show commander and select the command by pressing "<leader>fc"
 
 
 
