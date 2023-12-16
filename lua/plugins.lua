@@ -26,6 +26,7 @@ lvim.plugins={
 "nvim-treesitter/playground",
 "wakatime/vim-wakatime",
 "dkarter/bullets.vim",
+"ray-x/web-tools.nvim",
 {
   "folke/flash.nvim",
   event = "VeryLazy",

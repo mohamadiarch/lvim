@@ -11,6 +11,7 @@ vim.api.nvim_set_keymap("i", "jj", "<ESC>", {}) -- press jj for nodrmal mode [a-
 -- vim.api.nvim_set_keymap("n", "ii", "i", {}) -- press jj for nodrmal mode [a-o-i== insert mode]
 
 
+
 -- -- Run Programs by space+r inside vim
 -- local function run_curr_python_file()
 
@@ -28,6 +29,17 @@ vim.api.nvim_set_keymap("i", "jj", "<ESC>", {}) -- press jj for nodrmal mode [a-
 --     desc = "Run .py file via Neovim built-in terminal", 
 --     callback = run_curr_python_file
 -- })
+
+
+local function run_google_for_current_file()
+  -- add chrome folder to your path
+  local currnetPath=vim.api.nvim_buf_get_name(0)
+  vim.api.nvim_feedkeys(":!chrome "..currnetPath.."\n","n", false)
+end
+vim.keymap.set({'n'}, '<space>rg', '', { 
+    desc = "run_google_for_current_file", 
+    callback = run_google_for_current_file
+})
 
 
 -- vim.keymap.set('n', '<leader>r', ':RunCode<CR>', { noremap = true, silent = false })
