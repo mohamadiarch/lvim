@@ -2,13 +2,16 @@
 local wk= require("which-key")
 
 
+
+
+
 -- vim.api.nvim_set_keymap("n", "<F5>", "<cmd>!python % <CR>", {}) -- run programs
 vim.api.nvim_set_keymap("i", "kk", "<CR>", {}) -- press kk for pressing enter in insermode
 vim.api.nvim_set_keymap("n", "qq", ":qa!", {}) -- press enter to exit
 vim.api.nvim_set_keymap("n", "wq", ":wqa!", {}) -- press enter to save and exit
 vim.api.nvim_set_keymap("i", "jj", "<ESC>", {}) -- press jj for nodrmal mode [a-o-i== insert mode]
--- vim.api.nvim_set_keymap("n", "i", "<CR>", {}) -- press jj for nodrmal mode [a-o-i== insert mode]
--- vim.api.nvim_set_keymap("n", "ii", "i", {}) -- press jj for nodrmal mode [a-o-i== insert mode]
+vim.api.nvim_set_keymap("n", "ii", "<cmd>:startinsert<cr>", {}) -- ii for insert mode
+vim.api.nvim_set_keymap("n", "i", "<CR>", {}) -- enter in normal mode
 
 
 
@@ -42,6 +45,31 @@ vim.keymap.set({'n'}, '<space>rg', '', {
 })
 
 
+
+
+serach_dictionary = function(a)
+  -- vim.api.nvim_command(":echo 'Hello from Lua!'")
+  -- local currentLine = vim.fn.getline(".")
+  local currnetPath = "https://www.ldoceonline.com/"
+  local wordUnderCursor = vim.fn.expand("<cWORD>")  
+  if a.args=="longman" then
+    currnetPath ="https://www.ldoceonline.com/dictionary/" .. wordUnderCursor
+  end
+  if a.args=="cambridge" then
+    currnetPath ="https://dictionary.cambridge.org/dictionary/english/" .. wordUnderCursor
+  end
+  if a.args=="oxford" then
+    currnetPath ="https://www.oxfordlearnersdictionaries.com/definition/english/mom?q=" .. wordUnderCursor
+  end
+  if a.args=="google" then
+    currnetPath ="https://www.google.com/search?q=" .. wordUnderCursor .. " meaning"
+  end
+  vim.api.nvim_feedkeys(":!chrome "..currnetPath.."\n","n", false)
+end
+vim.api.nvim_create_user_command("Dict", serach_dictionary, { desc = "Search word in dictionary" ,nargs = "*" })
+
+
+
 -- vim.keymap.set('n', '<leader>r', ':RunCode<CR>', { noremap = true, silent = false })
 -- vim.keymap.set('n', '<leader>rf', ':RunFile<CR>', { noremap = true, silent = false })
 -- vim.keymap.set('n', '<leader>rft', ':RunFile tab<CR>', { noremap = true, silent = false })
@@ -62,6 +90,8 @@ wk.register({
   k={
     name="vscode",
     v = { "<cmd>:Glow<CR>", "markdown viewer" },
+    c = { "<cmd>:PickColor<CR>", "Color picker" },
+    ci = { "<cmd>:PickColorInsert<CR>", "Color picker insert" },
   },
   m={
     -- flash in a plugin for motion and jumping
@@ -80,6 +110,10 @@ wk.register({
     c = { "<cmd>:RunClose<CR>", "run close" },
     crf = { "<cmd>:CRFiletype<CR>", "run CRFile" },
     crp = { "<cmd>:CRProjects<CR>", "run CRProjects" },
+    l = { "<cmd>:Dict longman<CR>", "run longman" },
+    o = { "<cmd>:Dict oxford<CR>", "run oxford" },
+    k = { "<cmd>:Dict cambridge<CR>", "run cambridge" },
+    G = { "<cmd>:Dict google<CR>", "run google" },
   }
 },{prefix = "<leader>"})
 

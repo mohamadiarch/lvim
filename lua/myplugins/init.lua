@@ -52,6 +52,11 @@ require('code_runner').setup({
 
 
 
-
-
+----require 'colorizer'.setup() ===> Attaches to every FileType mode
+require 'colorizer'.setup({
+  'css';
+  'javascript';
+  html = { mode = 'background' };
+}, { mode = 'foreground' })
+require('color-picker').setup()
 

@@ -11,7 +11,7 @@ require("plugins")
 require("myplugins")
 require("LSP")
 
-
+-- vim.opt.relativenumber = true 
 
 
 

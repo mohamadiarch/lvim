@@ -15,3 +15,22 @@ Have git, make, pip, python, npm, node and cargo and PowerShell 7+  installed on
 2. git clone https://github.com/mohamadiarch/lunarvim.git
 3. run `install.ps1` in powershell 7 for installing dependencies
 4. if dependencies is installed run lunarvim in path `utils\bin\lvim.ps1`
+
+-----------------------------------------------------------------------------------------
+
+## Persian Support
+there is no need to `set arabic` or `set keymap=arabic`
+: set termbidi
+: set encoding? ===> check what is encoding in vim
+set nerdfont in both terminal and vim even your browser ==> vim.opt.guifont = "Fira Nerd Font Mono"
+
+#### windows
+
+#### Linux
+
+----------------------------------------------------------------------------------------
+
+## chalenges
+1. live preview for html and markdown
+2. custome snippets of others
+3. file preview

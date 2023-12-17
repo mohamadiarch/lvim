@@ -1,11 +1,16 @@
 
 -- User Commands should be Uppercase
 -- windows path
+
+
 vim.cmd([[
+  command! SourceRc source C:\Users\mohammadi\AppData\Local\lvim\config.lua
   command! Vimrc tabe C:\Users\mohammadi\AppData\Local\lvim\config.lua
   command! VimrcLunar tabe C:\Users\mohammadi\AppData\Roaming\lunarvim\lvim\init.lua
   command! VimrcWhichKey tabe C:\Users\mohammadi\AppData\Roaming\lunarvim\lvim\lua\lvim\core\whick-key.lua
+]])
 
+vim.cmd([[
   command! DocAll tabe C:\Users\mohammadi\AppData\Local\awesome-cheatsheets\Readme.md
   command! DocGit tabe C:\Users\mohammadi\AppData\Local\awesome-cheatsheets\tools\git.sh
   command! DocLinux tabe C:\Users\mohammadi\AppData\Local\awesome-cheatsheets\tools\linux.md
