@@ -24,7 +24,8 @@ vim.g.clipboard = {
 
 lvim.builtin.bufferline.options.numbers = "ordinal"
 vim.opt.guifont = "Fira Nerd Font Mono"
--- vim.opt.relativenumber = true 
+-- vim.opt.guifont = "Baloo Bhaijaan 2"
+vim.opt.relativenumber = true 
 -- vim.g.minimap_auto_start = true
 
 -- highlight Green guifg=Green

@@ -30,7 +30,12 @@ set nerdfont in both terminal and vim even your browser ==> vim.opt.guifont = "F
 
 ----------------------------------------------------------------------------------------
 
-## chalenges
+## issuse
 1. live preview for html and markdown
 2. custome snippets of others
-3. file preview
+3. file preview like pdf and img
+4. folding
+5. devdocs
+6. ctrl+ space not working
+7. obsidian-nvim
+8. 

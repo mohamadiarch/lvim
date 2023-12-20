@@ -1,0 +1,15 @@
+they
+New
+Projects
+Configuration
+they
+suppress
+consistent
+confers
+keystrokes,
+keystrokes,
+keystrokes,
+lot
+keystrokes,
+powerful
+`@dataclasses.dataclass`.

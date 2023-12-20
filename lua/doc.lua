@@ -9,7 +9,7 @@ vim.cmd([[
   command! VimrcLunar tabe C:\Users\mohammadi\AppData\Roaming\lunarvim\lvim\init.lua
   command! VimrcWhichKey tabe C:\Users\mohammadi\AppData\Roaming\lunarvim\lvim\lua\lvim\core\whick-key.lua
 ]])
-
+-- change path of e_under_cursor.md in keymaps.lua
 vim.cmd([[
   command! DocAll tabe C:\Users\mohammadi\AppData\Local\awesome-cheatsheets\Readme.md
   command! DocGit tabe C:\Users\mohammadi\AppData\Local\awesome-cheatsheets\tools\git.sh
