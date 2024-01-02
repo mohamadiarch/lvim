@@ -6,19 +6,39 @@ local wk= require("which-key")
 vim.g.codeium_disable_bindings = 1
 
 
-vim.api.nvim_set_keymap("i", "kk", "<CR>", {}) -- press kk for pressing enter in insermode
+vim.api.nvim_set_keymap("i", "<space>rr", "<esc><cmd>:w<CR><cmd>:RunCode<CR>i", {}) -- run code in insert mode
+vim.api.nvim_set_keymap("i", "<space>ww", "<esc><cmd>:w<CR>i", {}) -- :w in insert mode
+vim.api.nvim_set_keymap("i", "<space>//", "<esc>gcci", {}) -- :w in insert mode
 vim.api.nvim_set_keymap("n", "qq", ":qa!", {}) -- press enter to exit
 vim.api.nvim_set_keymap("n", "wq", ":wqa!", {}) -- press enter to save and exit
 vim.api.nvim_set_keymap("i", "jj", "<ESC>", {}) -- press jj for nodrmal mode [a-o-i== insert mode]
+vim.api.nvim_set_keymap("i", "kk", "<CR>", {}) -- press kk for pressing enter in insermode
+vim.api.nvim_set_keymap("i", "oo", "<C-o>o", {}) -- go to next line with oo in the middle of string
 -- vim.api.nvim_set_keymap("n", "ii", "<cmd>:startinsert<cr>", {}) -- ii for insert mode
 -- vim.api.nvim_set_keymap("n", "i", "<CR>", {}) -- enter in normal mode
 
 ----------------- <F1> <F12>
 -- vim.api.nvim_set_keymap("n", "<F5>", "<cmd>!python % <CR>", {}) -- run programs
 
-
--- local cmp_mapping = require "cmp.config.mapping"
+---------------------change default lunarvim---------------------------
+local cmp_mapping = require "cmp.config.mapping"
+local luasnip = require "luasnip"
 -- lvim.builtin.cmp.mapping["<C-space>"] = cmp_mapping.complete()
+lvim.builtin.cmp.mapping["<Tab>"] = nil
+lvim.builtin.cmp.mapping["<C-k>"]  = nil  -- still works I dont know why
+lvim.builtin.cmp.mapping["<C-j>"]  = nil  -- still works I dont know why
+lvim.builtin.cmp.mapping["K"] = cmp_mapping.select_prev_item()  -- shift+ k jump in menu
+lvim.builtin.cmp.mapping["J"] = cmp_mapping.select_next_item()   -- shift+ j jump in menu
+-- tab is not for jump in compeltion menu and ai accept
+-- tab is just for jumping in snippet palceholder
+lvim.builtin.cmp.mapping["<Tab>"] = cmp_mapping(function(fallback)
+  if luasnip.expand_or_locally_jumpable() then
+    luasnip.expand_or_jump()
+  else
+    fallback()
+  end
+end, { "i", "s" })
+
 
 
 -- -- Run Programs by space+r inside vim
@@ -101,7 +121,7 @@ wk.register({
   ,
   r={
     name="run",
-    r = { "<cmd>:RunCode<CR>", "run in bottom" },
+    r = { "<cmd>:w<CR><cmd>:RunCode<CR>i", "run in bottom" }, -- i for inset mode for input user
     f = { "<cmd>:RunFile<CR>", "run file" },
     t = { "<cmd>:RunFile tab<CR>", "run in new tab" },
     p = { "<cmd>:RunProject<CR>", "run project" },

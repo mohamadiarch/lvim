@@ -38,4 +38,6 @@ set nerdfont in both terminal and vim even your browser ==> vim.opt.guifont = "F
 5. devdocs
 6. ctrl+ space not working
 7. obsidian-nvim
-8. 
+8. open document from code in chrome
+
+moviing in insertmode===> {("who left")}
