@@ -5,6 +5,7 @@
 -- Discord: https://discord.com/invite/Xb9B4Ny
 
 require("options")
+require("commands")
 require("keymaps")
 require("doc")
 require("plugins")

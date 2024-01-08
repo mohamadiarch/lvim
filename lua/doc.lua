@@ -15,6 +15,7 @@ vim.cmd([[
   command! DocGit tabe C:\Users\mohammadi\AppData\Local\awesome-cheatsheets\tools\git.sh
   command! DocLinux tabe C:\Users\mohammadi\AppData\Local\awesome-cheatsheets\tools\linux.md
   command! DocCmd tabe C:\Users\mohammadi\AppData\Local\awesome-cheatsheets\tools\cmd.md
+  command! DocScripts tabe C:\Users\mohammadi\AppData\Local\scrtip\Readme.md
   
   command! EE tabe C:\Users\mohammadi\AppData\Local\lvim\doc\e.md
   command! DocNote tabe C:\Users\mohammadi\AppData\Local\lvim\doc\note.md

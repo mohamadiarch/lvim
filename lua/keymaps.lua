@@ -6,9 +6,23 @@ local wk= require("which-key")
 vim.g.codeium_disable_bindings = 1
 
 
+-- vim.api.nvim_set_keymap('n', '<C-l>', '<cmd>lua toggle_line_end()<CR>', { noremap = true, silent = true })
+
+-- function toggle_line_end()
+--   print(vim.api.nvim_win_get_cursor)
+--   -- local col = vim.api.nvim_win_get_cursor(0)[2]
+--   -- if col == 0 then
+--   --   vim.api.nvim_win_set_cursor(0, { vim.fn.line "$", -1 })
+--   -- else
+--   --   vim.api.nvim_win_set_cursor(0, { vim.fn.line "$", 0 })
+--   -- end
+-- end
+
+
+
 vim.api.nvim_set_keymap("i", "<space>rr", "<esc><cmd>:w<CR><cmd>:RunCode<CR>i", {}) -- run code in insert mode
-vim.api.nvim_set_keymap("i", "<space>ww", "<esc><cmd>:w<CR>i", {}) -- :w in insert mode
-vim.api.nvim_set_keymap("i", "<space>//", "<esc>gcci", {}) -- :w in insert mode
+vim.api.nvim_set_keymap("i", "<space>ww", "<esc><cmd>:w<CR>a", {}) -- :w in insert mode
+vim.api.nvim_set_keymap("i", "<space>//", "<esc>gcc<esc>$a", {}) -- :w in insert mode
 vim.api.nvim_set_keymap("n", "qq", ":qa!", {}) -- press enter to exit
 vim.api.nvim_set_keymap("n", "wq", ":wqa!", {}) -- press enter to save and exit
 vim.api.nvim_set_keymap("i", "jj", "<ESC>", {}) -- press jj for nodrmal mode [a-o-i== insert mode]
@@ -23,8 +37,23 @@ vim.api.nvim_set_keymap("i", "oo", "<C-o>o", {}) -- go to next line with oo in t
 ---------------------change default lunarvim---------------------------
 local cmp_mapping = require "cmp.config.mapping"
 local luasnip = require "luasnip"
--- lvim.builtin.cmp.mapping["<C-space>"] = cmp_mapping.complete()
+local cmp=require("cmp")
+function ToggleCompletion()
+  if cmp.visible() then
+      cmp.close()
+  else
+      require("cmp").complete()
+  end
+end
+vim.api.nvim_set_keymap('i', '<c-b>', '<cmd>lua ToggleCompletion()<CR>', { noremap = true, silent = true })
+-- vim.api.nvim_set_keymap('n', '<c-b>', '<cmd>lua ToggleCompletion()<CR>', { noremap = true, silent = true })
+
+
+-- lvim.builtin.cmp.mapping["<C-b>"] = cmp_mapping.close()
+lvim.builtin.cmp.mapping["<C-e>"] = nil    -- this is for abbortion cmp popup, I write a code with <C-b> fot toggle
 lvim.builtin.cmp.mapping["<Tab>"] = nil
+lvim.builtin.cmp.mapping["<Down>"] = nil  -- when cmp pop is open you can navigate with down
+lvim.builtin.cmp.mapping["<Up>"] = nil    -- when cmp pop is open you can navigate with up
 lvim.builtin.cmp.mapping["<C-k>"]  = nil  -- still works I dont know why
 lvim.builtin.cmp.mapping["<C-j>"]  = nil  -- still works I dont know why
 lvim.builtin.cmp.mapping["K"] = cmp_mapping.select_prev_item()  -- shift+ k jump in menu
@@ -38,7 +67,6 @@ lvim.builtin.cmp.mapping["<Tab>"] = cmp_mapping(function(fallback)
     fallback()
   end
 end, { "i", "s" })
-
 
 
 -- -- Run Programs by space+r inside vim
@@ -97,6 +125,7 @@ vim.api.nvim_create_user_command("Dict", serach_dictionary, { desc = "Search wor
 
 
 
+
 -- flash.nvim
 wk.register({
   s={
@@ -110,13 +139,13 @@ wk.register({
     v = { "<cmd>:Glow<CR>", "markdown viewer" },
     c = { "<cmd>:PickColor<CR>", "Color picker" },
     ci = { "<cmd>:PickColorInsert<CR>", "Color picker insert" },
-  },
-  m={
     -- flash in a plugin for motion and jumping
-    name="me",
     j={function() require('flash').jump() end, "flash jump"},
     t={function() require('flash').treesitter() end, "flash treesitter"},
     r={function() require('flash').treesitter_search() end, "flash treesitter search"},
+  },
+  m={
+    name="me",
   }
   ,
   r={
@@ -128,6 +157,7 @@ wk.register({
     c = { "<cmd>:RunClose<CR>", "run close" },
     crf = { "<cmd>:CRFiletype<CR>", "run CRFile" },
     crp = { "<cmd>:CRProjects<CR>", "run CRProjects" },
+    --dictionary
     l = { "<cmd>:Dict longman<CR>", "run longman" },
     o = { "<cmd>:Dict oxford<CR>", "run oxford" },
     k = { "<cmd>:Dict cambridge<CR>", "run cambridge" },
