@@ -14,3 +14,6 @@ keystrokes,
 powerful
 `@dataclasses.dataclass`.
 omitted.
+function
+function
+https://github.com/CRAG666/code_runner.nvim

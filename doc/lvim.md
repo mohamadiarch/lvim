@@ -15,4 +15,18 @@
 ```bash
 ctrl+ \        # terminal
 ctrl + e       # nvimtree
+alt+1 or 2 or 3           # toggle terminal
+ctrl+ +-      # zoom in and out
 ```
+
+
+## common vim navigating
+```bash
+shift + zero==> end of block
+shift + nine ===> end of bock backward
+gg ===> start of file
+G ===> end of file
+A ====> append cursor end of line
+```
+
+

@@ -1,4 +1,4 @@
-
+-- ctrl-z is for tesing so we should not assing <c-z> to something
 local wk= require("which-key")
 
 -- codeium keymaps are inside plugins.lua
@@ -24,13 +24,14 @@ vim.api.nvim_set_keymap("i", "<space>rr", "<esc><cmd>:w<CR><cmd>:RunCode<CR>i", 
 vim.api.nvim_set_keymap("i", "<space>ww", "<esc><cmd>:w<CR>a", {}) -- :w in insert mode
 vim.api.nvim_set_keymap("i", "<space>//", "<esc>gcc<esc>$a", {}) -- :w in insert mode
 vim.api.nvim_set_keymap("n", "qq", ":qa!", {}) -- press enter to exit
-vim.api.nvim_set_keymap("n", "wq", ":wqa!", {}) -- press enter to save and exit
+vim.api.nvim_set_keymap("n", "qw", ":wqa!", {}) -- press enter to save and exit (wq has conflict by word navigation)
 vim.api.nvim_set_keymap("i", "jj", "<ESC>", {}) -- press jj for nodrmal mode [a-o-i== insert mode]
-vim.api.nvim_set_keymap("i", "kk", "<CR>", {}) -- press kk for pressing enter in insermode
+vim.api.nvim_set_keymap("i", "jk", "<CR>", {}) -- press jk for pressing enter in insermode
 vim.api.nvim_set_keymap("i", "oo", "<C-o>o", {}) -- go to next line with oo in the middle of string
 -- vim.api.nvim_set_keymap("n", "ii", "<cmd>:startinsert<cr>", {}) -- ii for insert mode
 -- vim.api.nvim_set_keymap("n", "i", "<CR>", {}) -- enter in normal mode
 
+vim.api.nvim_set_keymap("n", "0", "^i", {})   -- insert start of line (A for end)
 ----------------- <F1> <F12>
 -- vim.api.nvim_set_keymap("n", "<F5>", "<cmd>!python % <CR>", {}) -- run programs
 
@@ -87,14 +88,14 @@ end, { "i", "s" })
 --     callback = run_curr_python_file
 -- })
 
-
+-- gx for open link under the cursor
 local function run_google_for_current_file()
   -- add chrome folder to your path
   local currnetPath=vim.api.nvim_buf_get_name(0)
   vim.api.nvim_feedkeys(":!chrome "..currnetPath.."\n","n", false)
 end
 vim.keymap.set({'n'}, '<space>rg', '', { 
-    desc = "run_google_for_current_file", 
+    desc = "run_google_for_current_file", -- you can install markdown viewr in chrome  
     callback = run_google_for_current_file
 })
 
@@ -115,7 +116,7 @@ local serach_dictionary = function(a)
   elseif a.args=="google" then
     currnetPath ="https://www.google.com/search?q=" .. wordUnderCursor .. " meaning"
   end
-  vim.api.nvim_feedkeys(":!chrome "..currnetPath.."\n","n", false)
+  vim.api.nvim_feedkeys(":!chrome "..currnetPath.."\n","n", false) -- add chrome.exe to your path
   local Efile= "C:\\Users\\mohammadi\\AppData\\Local\\lvim\\doc\\e_under_cursor.md"
   local fileHandle = io.open(Efile, "a") -- append mode
   fileHandle:write("\n" .. wordUnderCursor)
@@ -128,10 +129,10 @@ vim.api.nvim_create_user_command("Dict", serach_dictionary, { desc = "Search wor
 
 -- flash.nvim
 wk.register({
-  s={
-    -- there is lots of mapping with s in lunarvimg config
-    name = "Search",
-    a = { "<cmd>Telescope<cr>", "Telescope" },
+  p={
+    -- there is lots of mapping with p in lunarvimg config
+    name = "plugins",
+    a = { "<cmd>Telescope<cr>", "Telescope" },  -- command pallet == pa
   },
   -- k means up so you should wait for popup after pressing <leader>
   k={
@@ -162,6 +163,7 @@ wk.register({
     o = { "<cmd>:Dict oxford<CR>", "run oxford" },
     k = { "<cmd>:Dict cambridge<CR>", "run cambridge" },
     G = { "<cmd>:Dict google<CR>", "run google" },
+    --g poen google for current file like html 
   }
 },{prefix = "<leader>"})
 
@@ -169,3 +171,10 @@ wk.register({
 
               
 
+-- wk.register({
+--   s={
+--     -- there is lots of mapping with s in lunarvimg config
+--     name = "Search",
+--     a = { "<cmd>Telescope<cr>", "Telescope" },
+--   },
+-- },{prefix = "<leader>"})

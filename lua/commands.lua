@@ -24,4 +24,32 @@ vim.cmd([[
   command! CmpDisable lua require('cmp').setup.buffer { enabled = false }
   command! CmpEnable lua require('cmp').setup.buffer { enabled = true }
 ]])
+
+
+
+--------------------------------web--------------------------------
+--websites
+-- add chrome.exe to your path
+vim.cmd([[
+  command! WebGithub !chrome https://github.com/mohamadiarch?tab=repositories
+  command! WebShortcutWord !chrome https://shortcutworld.com/
+  command! WebGrep !chrome https://grep.app/
+  command! WebSearchCode !chrome https://searchcode.com/
+  command! WebAlgorithm !chrome https://the-algorithms.com/
+  command! WebAwsome !chrome https://github.com/sindresorhus/awesome?tab=readme-ov-file
+
+]])
+-- music websites
+vim.cmd([[
+  command! MusicForPrograming !chrome https://musicforprogramming.net
+  command! MusicMyNoise !chrome https://mynoise.net/
+  command! MusicWhiteNoise !chrome https://www.relaxingwhitenoise.com/
+  command! MusicNoisli !chrome https://www.noisli.com/
+  command! MusicGenerative !chrome https://play.generative.fm/
+  command! MusicFreeCodeCamp !chrome https://coderadio.freecodecamp.org/
+]])
+
+-- imp files
+
+-- imp apps
   
