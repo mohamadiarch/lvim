@@ -137,7 +137,9 @@ wk.register({
   -- k means up so you should wait for popup after pressing <leader>
   k={
     name="vscode",
-    v = { "<cmd>:Glow<CR>", "markdown viewer" },
+    -- <leader>sk  list of shortkeys
+    v = { "<cmd>:MarkdownPreviewToggle<CR>", "markdown viewer live" },
+    g = { "<cmd>:Glow<CR>", "markdown viewer inside vim" },
     c = { "<cmd>:PickColor<CR>", "Color picker" },
     ci = { "<cmd>:PickColorInsert<CR>", "Color picker insert" },
     -- flash in a plugin for motion and jumping

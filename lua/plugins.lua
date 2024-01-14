@@ -83,15 +83,24 @@ lvim.plugins={
     vim.keymap.set('i', '<C-k>', function() return vim.fn['codeium#Complete']() end, { expr = true, silent = true })
   end
 },
-{
+-- {
   -- doc created by freecodecamp. you can download it it your neovim
-  "luckasRanarison/nvim-devdocs",
-  dependencies = {
-    "nvim-lua/plenary.nvim",
-    "nvim-telescope/telescope.nvim",
-    "nvim-treesitter/nvim-treesitter",
-  },
-  opts = {}
+  -- "luckasRanarison/nvim-devdocs",
+--   dependencies = {
+--     "nvim-lua/plenary.nvim",
+--     "nvim-telescope/telescope.nvim",
+--     "nvim-treesitter/nvim-treesitter",
+--   },
+--   opts = {}
+-- },
+{
+  "iamcco/markdown-preview.nvim", -- npm install yarn -g
+  cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
+  build = "cd app && yarn install",
+  init = function()
+    vim.g.mkdp_filetypes = { "markdown" }
+  end,
+  ft = { "markdown" },
 }
 
 }

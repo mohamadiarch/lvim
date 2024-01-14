@@ -9,7 +9,7 @@ vim.cmd([[
   command! VimrcLunar tabe C:\Users\mohammadi\AppData\Roaming\lunarvim\lvim\init.lua
   command! VimrcWhichKey tabe C:\Users\mohammadi\AppData\Roaming\lunarvim\lvim\lua\lvim\core\whick-key.lua
 ]])
--- lvim docs
+-- lvim docs--------------doc
 vim.cmd([[
   command! DocLvim tabe C:\Users\mohammadi\AppData\Local\lvim\doc\lvim.md
   command! DocInstall tabe C:\Users\mohammadi\AppData\Local\lvim\doc\install.md
@@ -17,20 +17,20 @@ vim.cmd([[
   command! DocLua tabe C:\Users\mohammadi\AppData\Local\lvim\doc\lua.md
 ]])
 
---personal notes
+--personal notes-------------note
 vim.cmd([[
   command! EE tabe C:\Users\mohammadi\AppData\Local\lvim\doc\e.md
-  command! DocNote tabe C:\Users\mohammadi\AppData\Local\lvim\doc\note.md
-  command! DocMyMind tabe C:\Users\mohammadi\AppData\Local\lvim\doc\mymind.md
+  command! NoteME tabe C:\Users\mohammadi\AppData\Local\lvim\doc\note.md
+  command! NoteMyMind tabe C:\Users\mohammadi\AppData\Local\lvim\doc\mymind.md
 ]])
--- dev-notes
+-- dev-notes-----------------note
 vim.cmd([[
   command! NoteDevNotes tabe C:\Users\mohammadi\AppData\Local\repos\dev-notes\Readme.md
   command! NotePython tabe C:\Users\mohammadi\AppData\Local\repos\dev-notes\python\python.md
   command! Notejs tabe C:\Users\mohammadi\AppData\Local\repos\dev-notes\js\js.md
 ]])
 
---docs
+--docs--------------------doc
 -- change path of e_under_cursor.md in keymaps.lua
 vim.cmd([[
   command! DocScripts tabe C:\Users\mohammadi\AppData\Local\repos\scrtip\Readme.md  
