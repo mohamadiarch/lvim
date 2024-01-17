@@ -20,7 +20,9 @@ vim.g.codeium_disable_bindings = 1
 
 
 
-vim.api.nvim_set_keymap("i", "<space>rr", "<esc><cmd>:w<CR><cmd>:RunCode<CR>i", {}) -- run code in insert mode
+-- vim.api.nvim_set_keymap("i", "<space>rt", "<esc><cmd>:w<CR><M-1>i<UP>", {}) -- run code with args -- <spac>rt: run in newtab
+-- vim.api.nvim_set_keymap("n", "<space>rt", "<esc><cmd>:w<CR><M-1>i<UP>", {}) -- run code with args
+-- vim.api.nvim_set_keymap("i", "<space>rr", "<esc><cmd>:w<CR><cmd>:RunCode<CR>i", {}) -- run code just to see output
 vim.api.nvim_set_keymap("i", "<space>ww", "<esc><cmd>:w<CR>a", {}) -- :w in insert mode
 vim.api.nvim_set_keymap("i", "<space>//", "<esc>gcc<esc>$a", {}) -- :w in insert mode
 vim.api.nvim_set_keymap("n", "qq", ":qa!", {}) -- press enter to exit
@@ -28,10 +30,11 @@ vim.api.nvim_set_keymap("n", "qw", ":wqa!", {}) -- press enter to save and exit 
 vim.api.nvim_set_keymap("i", "jj", "<ESC>", {}) -- press jj for nodrmal mode [a-o-i== insert mode]
 vim.api.nvim_set_keymap("i", "jk", "<CR>", {}) -- press jk for pressing enter in insermode
 vim.api.nvim_set_keymap("i", "oo", "<C-o>o", {}) -- go to next line with oo in the middle of string
+vim.api.nvim_set_keymap("n", "0", "^i", {})   -- insert start of line (A for end)
 -- vim.api.nvim_set_keymap("n", "ii", "<cmd>:startinsert<cr>", {}) -- ii for insert mode
 -- vim.api.nvim_set_keymap("n", "i", "<CR>", {}) -- enter in normal mode
 
-vim.api.nvim_set_keymap("n", "0", "^i", {})   -- insert start of line (A for end)
+vim.api.nvim_set_keymap("n", "<M-4>", "<cmd>:TermCurrentH<CR>", {}) 
 ----------------- <F1> <F12>
 -- vim.api.nvim_set_keymap("n", "<F5>", "<cmd>!python % <CR>", {}) -- run programs
 
@@ -101,6 +104,11 @@ vim.keymap.set({'n'}, '<space>rg', '', {
 
 
 
+-- vim.keymap.set({'n'}, '<C-z>', '', { 
+--     desc = "run_only_current_file", -- you can install markdown viewr in chrome  
+--     callback = run_only_current_file
+-- })
+
 
 local serach_dictionary = function(a)
   -- vim.api.nvim_command(":echo 'Hello from Lua!'")
@@ -123,6 +131,11 @@ local serach_dictionary = function(a)
   fileHandle:close()
 end
 vim.api.nvim_create_user_command("Dict", serach_dictionary, { desc = "Search word in dictionary" ,nargs = "*" })
+
+
+
+
+
 
 
 
@@ -155,11 +168,17 @@ wk.register({
     name="run",
     r = { "<cmd>:w<CR><cmd>:RunCode<CR>i", "run in bottom" }, -- i for inset mode for input user
     f = { "<cmd>:RunFile<CR>", "run file" },
-    t = { "<cmd>:RunFile tab<CR>", "run in new tab" },
+    T = { "<cmd>:RunFile tab<CR>", "run in new tab" }, --rt for args
     p = { "<cmd>:RunProject<CR>", "run project" },
     c = { "<cmd>:RunClose<CR>", "run close" },
     crf = { "<cmd>:CRFiletype<CR>", "run CRFile" },
     crp = { "<cmd>:CRProjects<CR>", "run CRProjects" },
+    -- g={
+    --    name="end directory",
+    --    j={},
+    --    k={},
+    --    l={}
+    -- }
     --dictionary
     l = { "<cmd>:Dict longman<CR>", "run longman" },
     o = { "<cmd>:Dict oxford<CR>", "run oxford" },
