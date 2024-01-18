@@ -1,6 +1,23 @@
 -- ctrl-z is for tesing so we should not assing <c-z> to something
 local wk= require("which-key")
 
+-- local actions = require('telescope.actions')
+-- require('telescope').setup{
+--   defaults = {
+--     -- Default configuration for telescope goes here:
+--     -- config_key = value,
+--     mappings = {
+--       n = {
+--         -- map actions.which_key to <C-h> (default: <C-/>)
+--         -- actions.which_key shows the mappings for your picker,
+--         -- e.g. git_{create, delete, ...}_branch for the git_branches picker
+--         ["<c-z>"] = actions.close
+--       }
+--     }
+--   },
+-- }
+
+
 -- codeium keymaps are inside plugins.lua
 -- codeium's default keybindings can be disabled by setting
 vim.g.codeium_disable_bindings = 1
@@ -18,10 +35,9 @@ vim.g.codeium_disable_bindings = 1
 --   -- end
 -- end
 
-
-
+  
+-- vim.api.nvim_set_keymap("i", "<S-A>k", "yyp", {}) 
 -- vim.api.nvim_set_keymap("i", "<space>rt", "<esc><cmd>:w<CR><M-1>i<UP>", {}) -- run code with args -- <spac>rt: run in newtab
--- vim.api.nvim_set_keymap("n", "<space>rt", "<esc><cmd>:w<CR><M-1>i<UP>", {}) -- run code with args
 -- vim.api.nvim_set_keymap("i", "<space>rr", "<esc><cmd>:w<CR><cmd>:RunCode<CR>i", {}) -- run code just to see output
 vim.api.nvim_set_keymap("i", "<space>ww", "<esc><cmd>:w<CR>a", {}) -- :w in insert mode
 vim.api.nvim_set_keymap("i", "<space>//", "<esc>gcc<esc>$a", {}) -- :w in insert mode
@@ -29,12 +45,14 @@ vim.api.nvim_set_keymap("n", "qq", ":qa!", {}) -- press enter to exit
 vim.api.nvim_set_keymap("n", "qw", ":wqa!", {}) -- press enter to save and exit (wq has conflict by word navigation)
 vim.api.nvim_set_keymap("i", "jj", "<ESC>", {}) -- press jj for nodrmal mode [a-o-i== insert mode]
 vim.api.nvim_set_keymap("i", "jk", "<CR>", {}) -- press jk for pressing enter in insermode
-vim.api.nvim_set_keymap("i", "oo", "<C-o>o", {}) -- go to next line with oo in the middle of string
-vim.api.nvim_set_keymap("n", "0", "^i", {})   -- insert start of line (A for end)
+vim.api.nvim_set_keymap("i", "OO", "<C-o>o", {}) -- go to next line with oo in the middle of string
+-- vim.api.nvim_set_keymap("n", "0", "^i", {})   -- insert start of line (A for end)
 -- vim.api.nvim_set_keymap("n", "ii", "<cmd>:startinsert<cr>", {}) -- ii for insert mode
 -- vim.api.nvim_set_keymap("n", "i", "<CR>", {}) -- enter in normal mode
 
-vim.api.nvim_set_keymap("n", "<M-4>", "<cmd>:TermCurrentH<CR>", {}) 
+vim.api.nvim_set_keymap("n", "<M-0>", "<esc><cmd>:w<CR><M-1>i<UP>", {}) -- run code with args
+vim.api.nvim_set_keymap("n", "<M-4>", "<esc><cmd>:w<CR><cmd>:TermCurrentH<CR>", {}) 
+vim.api.nvim_set_keymap("n", "<M-5>", "<esc><cmd>:w<CR><cmd>:TermCurrentV<CR>", {}) 
 ----------------- <F1> <F12>
 -- vim.api.nvim_set_keymap("n", "<F5>", "<cmd>!python % <CR>", {}) -- run programs
 
@@ -51,6 +69,18 @@ function ToggleCompletion()
 end
 vim.api.nvim_set_keymap('i', '<c-b>', '<cmd>lua ToggleCompletion()<CR>', { noremap = true, silent = true })
 -- vim.api.nvim_set_keymap('n', '<c-b>', '<cmd>lua ToggleCompletion()<CR>', { noremap = true, silent = true })
+
+
+local actions = require('telescope.actions')
+lvim.builtin.telescope.defaults.mappings = {
+  n = {
+    ["qq"] = actions.close,
+    ["<leader>q"] = actions.close,
+    ["<leader>v"] = actions.select_vertical,
+  }
+}
+-- lvim.builtin.telescope.theme="ivy" --ivy or dropdown
+
 
 
 -- lvim.builtin.cmp.mapping["<C-b>"] = cmp_mapping.close()
@@ -97,7 +127,7 @@ local function run_google_for_current_file()
   local currnetPath=vim.api.nvim_buf_get_name(0)
   vim.api.nvim_feedkeys(":!chrome "..currnetPath.."\n","n", false)
 end
-vim.keymap.set({'n'}, '<space>rg', '', { 
+vim.keymap.set({'n'}, '<space>rG', '', {  --rg for google current word
     desc = "run_google_for_current_file", -- you can install markdown viewr in chrome  
     callback = run_google_for_current_file
 })
@@ -138,8 +168,6 @@ vim.api.nvim_create_user_command("Dict", serach_dictionary, { desc = "Search wor
 
 
 
-
-
 -- flash.nvim
 wk.register({
   p={
@@ -162,12 +190,13 @@ wk.register({
   },
   m={
     name="me",
-  }
-  ,
+  },
   r={
     name="run",
     r = { "<cmd>:w<CR><cmd>:RunCode<CR>i", "run in bottom" }, -- i for inset mode for input user
     f = { "<cmd>:RunFile<CR>", "run file" },
+    e = { "<cmd>:DunB<CR>", "run just current file with normal mode" },
+    t = { "<cmd>:DunB<CR><esc><cmd>:startinsert", "run just current file insertmode" },
     T = { "<cmd>:RunFile tab<CR>", "run in new tab" }, --rt for args
     p = { "<cmd>:RunProject<CR>", "run project" },
     c = { "<cmd>:RunClose<CR>", "run close" },
@@ -183,12 +212,70 @@ wk.register({
     l = { "<cmd>:Dict longman<CR>", "run longman" },
     o = { "<cmd>:Dict oxford<CR>", "run oxford" },
     k = { "<cmd>:Dict cambridge<CR>", "run cambridge" },
-    G = { "<cmd>:Dict google<CR>", "run google" },
+    g = { "<cmd>:Dict google<CR>", "run google" }, --rG for google current file
     --g poen google for current file like html 
   }
 },{prefix = "<leader>"})
 
 
+-- lvim.builtin.which_key.mappings["f"] = {
+--   name="find",
+--   f={
+--    function()
+--      require("lvim.core.telescope.custom-finders").find_project_files { previewer = false }
+--    end,
+--    "Find File",
+--  },
+--   g={
+--    { "<cmd>Telescope live_grep theme=ivy<cr>", "Live Grep" },
+--   }
+-- }
+
+-- lvim.builtin.which_key.mappings["e"] = {
+--   name="find",
+--   e={
+--      { "<cmd>NvimTreeToggle<CR>", "Explorer" },
+--   }
+-- }
+
+lvim.builtin.which_key.mappings["h"] = {
+  name="find",
+  h={
+    { "<cmd>nohlsearch<CR>", "No Highlight" },
+  }
+}
+
+lvim.builtin.which_key.mappings[";"] = {
+  name="find",
+  [";"]={
+    { "<cmd>Alpha<CR>", "Dashboard" },
+  }
+}
+lvim.builtin.which_key.mappings["s"] = {
+  name = "Search",
+  s = { "<cmd>Telescope live_grep theme=ivy<cr>", "Live Grep inside project files"},
+  p = { '<cmd>lua require("spectre").toggle()<CR>', "Toggle Spectre"},
+  w = { '<cmd>lua require("spectre").open_visual({select_word=true})<CR>', "Spectre curent word"},
+  W = {'<esc><cmd>lua require("spectre").open_visual()<CR>', "Search Visual word"},
+  F = {'<cmd>lua require("spectre").open_file_search({select_word=true})<CR>', "spectre on current File"},
+  --
+  b = { "<cmd>Telescope git_branches<cr>", "Checkout branch" },
+  c = { "<cmd>Telescope colorscheme<cr>", "Colorscheme" },
+  f = { "<cmd>Telescope find_files<cr>", "Find File" },
+  h = { "<cmd>Telescope help_tags<cr>", "Find Help" },
+  H = { "<cmd>Telescope highlights<cr>", "Find highlight groups" },
+  M = { "<cmd>Telescope man_pages<cr>", "Man Pages" },
+  r = { "<cmd>Telescope oldfiles<cr>", "Open Recent File" },
+  R = { "<cmd>Telescope registers<cr>", "Registers" },
+  t = { "<cmd>Telescope live_grep<cr>", "Text" },
+  k = { "<cmd>Telescope keymaps<cr>", "Keymaps" },
+  C = { "<cmd>Telescope commands<cr>", "Commands" },
+  l = { "<cmd>Telescope resume<cr>", "Resume last search" },
+  P = {
+    "<cmd>lua require('telescope.builtin').colorscheme({enable_preview = true})<cr>",
+    "Colorscheme with Preview",
+  },
+}
 
               
 
@@ -198,4 +285,4 @@ wk.register({
 --     name = "Search",
 --     a = { "<cmd>Telescope<cr>", "Telescope" },
 --   },
--- },{prefix = "<leader>"})
+-- },{prefix = "<C>"})

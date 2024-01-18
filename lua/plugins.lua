@@ -73,6 +73,22 @@ lvim.plugins={
 --   end
 -- },
 {
+  "windwp/nvim-spectre",
+  -- req: choco install sed
+  event = "BufRead",
+  config = function()
+    require("spectre").setup({
+      mapping={
+        ['send_to_qf'] = {
+          map = "<leader>Q", --does not have confilict with <leader>q and <C-q>
+          cmd = "<cmd>lua require('spectre.actions').send_to_qf()<CR>",
+          desc = "send all items to quickfix"
+      },
+    }
+    })
+  end,
+},
+{
   'Exafunction/codeium.vim',
   config = function ()
     -- Change '<C-g>' here to any keycode you like.

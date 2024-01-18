@@ -11,6 +11,7 @@ require("doc")
 require("plugins")
 require("myplugins")
 require("LSP")
+-- require("telescope")
 
 
 

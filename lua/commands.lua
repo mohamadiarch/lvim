@@ -44,15 +44,22 @@ function run_only_current_file(direction)
   if  format== 'js' then
     compiler="node"
   end
-  vim.api.nvim_feedkeys(":" ..direction.. " split term://cd %:p:h &&" ..compiler.. " %:t\n","n", false)
+    vim.api.nvim_feedkeys(":" ..direction.. " split term://cd %:p:h &&" ..compiler.. " %:t\n","n", false)
 end
 -- vim.cmd([[command! DunV below split term://cd %:p:h && python %:t ]])
-vim.cmd([[command! DuBn lua run_only_current_file("below") ]])
+vim.cmd([[command! DunBi lua run_only_current_file("below")i]])
+vim.cmd([[command! DunB lua run_only_current_file("below") ]])
 vim.cmd([[command! DunV lua run_only_current_file("vertical") ]])
 vim.cmd([[command! DunT lua run_only_current_file("tab") ]])
 -- send this for nvim 
 -- vim.api.nvim_set_keymap("n", "<F6>", ":let $VIM_DIR=expand('%:p:h')<CR>:terminal<CR>cd $VIM_DIR<CR>", {})
   
+
+
+-- --------------------------------- telescope---------------------------------
+-- vim.cmd([[command! ThemeTelDrop Telescope find_files theme=dropdown]])
+-- vim.cmd([[command! ThemeTelIvy Telescope find_files theme=ivy]])
+
 
 
 
