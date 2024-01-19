@@ -56,6 +56,17 @@ vim.api.nvim_set_keymap("n", "<M-5>", "<esc><cmd>:w<CR><cmd>:TermCurrentV<CR>", 
 ----------------- <F1> <F12>
 -- vim.api.nvim_set_keymap("n", "<F5>", "<cmd>!python % <CR>", {}) -- run programs
 
+
+vim.api.nvim_set_keymap("n", "<space>1", "<esc><cmd>:BufferLineGoToBuffer 1<CR>", {}) 
+vim.api.nvim_set_keymap("n", "<space>2", "<esc><cmd>:BufferLineGoToBuffer 2<CR>", {}) 
+vim.api.nvim_set_keymap("n", "<space>3", "<esc><cmd>:BufferLineGoToBuffer 3<CR>", {}) 
+vim.api.nvim_set_keymap("n", "<space>4", "<esc><cmd>:BufferLineGoToBuffer 4<CR>", {}) 
+vim.api.nvim_set_keymap("n", "<space>5", "<esc><cmd>:BufferLineGoToBuffer 5<CR>", {}) 
+vim.api.nvim_set_keymap("n", "<space>6", "<esc><cmd>:BufferLineGoToBuffer 6<CR>", {}) 
+vim.api.nvim_set_keymap("n", "<space>7", "<esc><cmd>:BufferLineGoToBuffer 7<CR>", {}) 
+vim.api.nvim_set_keymap("n", "<space>8", "<esc><cmd>:BufferLineGoToBuffer 8<CR>", {}) 
+vim.api.nvim_set_keymap("n", "<space>9", "<esc><cmd>:BufferLineGoToBuffer 9<CR>", {}) 
+
 ---------------------change default lunarvim---------------------------
 local cmp_mapping = require "cmp.config.mapping"
 local luasnip = require "luasnip"
@@ -260,14 +271,14 @@ lvim.builtin.which_key.mappings["s"] = {
   F = {'<cmd>lua require("spectre").open_file_search({select_word=true})<CR>', "spectre on current File"},
   --
   b = { "<cmd>Telescope git_branches<cr>", "Checkout branch" },
-  c = { "<cmd>Telescope colorscheme<cr>", "Colorscheme" },
+  -- c = { "<cmd>Telescope colorscheme<cr>", "Colorscheme" },
+  t = { "<cmd>Telescope live_grep<cr>", "Text" },
   f = { "<cmd>Telescope find_files<cr>", "Find File" },
   h = { "<cmd>Telescope help_tags<cr>", "Find Help" },
   H = { "<cmd>Telescope highlights<cr>", "Find highlight groups" },
   M = { "<cmd>Telescope man_pages<cr>", "Man Pages" },
   r = { "<cmd>Telescope oldfiles<cr>", "Open Recent File" },
   R = { "<cmd>Telescope registers<cr>", "Registers" },
-  t = { "<cmd>Telescope live_grep<cr>", "Text" },
   k = { "<cmd>Telescope keymaps<cr>", "Keymaps" },
   C = { "<cmd>Telescope commands<cr>", "Commands" },
   l = { "<cmd>Telescope resume<cr>", "Resume last search" },

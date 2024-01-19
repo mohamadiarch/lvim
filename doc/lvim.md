@@ -27,6 +27,10 @@ shift + nine ===> end of bock backward
 gg ===> start of file
 G ===> end of file
 A ====> append cursor end of line
+:55 ==> go to line 55
+55G ==> go to line 55
+5gg ==> go 5 lines from gg
+5j ==> go down 5 lines
 ```
 
 
