@@ -17,6 +17,7 @@ ctrl+ \        # terminal
 ctrl + e       # nvimtree
 alt+1 or 2 or 3           # toggle terminal
 ctrl+ +-      # zoom in and out
+cltr+ d and ctrl + u     # page navigation ===> do not map this bcz common with vim and mybe use in servers
 ```
 
 
@@ -32,5 +33,46 @@ A ====> append cursor end of line
 5gg ==> go 5 lines from gg
 5j ==> go down 5 lines
 ```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 

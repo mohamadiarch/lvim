@@ -56,6 +56,11 @@ vim.api.nvim_set_keymap("n", "<M-5>", "<esc><cmd>:w<CR><cmd>:TermCurrentV<CR>", 
 ----------------- <F1> <F12>
 -- vim.api.nvim_set_keymap("n", "<F5>", "<cmd>!python % <CR>", {}) -- run programs
 
+lvim.lsp.buffer_mappings.normal_mode["K"] = nil    -- <leader>kk
+vim.keymap.set({'n', 'x', 'o'}, 'H', '^')
+vim.keymap.set({'n', 'x', 'o'}, 'L', '$')
+vim.keymap.set({'n', 'x', 'o'}, 'K', '6k')    
+vim.keymap.set({'n', 'x', 'o'}, 'J', '6j')
 
 vim.api.nvim_set_keymap("n", "<space>1", "<esc><cmd>:BufferLineGoToBuffer 1<CR>", {}) 
 vim.api.nvim_set_keymap("n", "<space>2", "<esc><cmd>:BufferLineGoToBuffer 2<CR>", {}) 
@@ -190,6 +195,7 @@ wk.register({
   k={
     name="vscode",
     -- <leader>sk  list of shortkeys
+    k=  { "<cmd>lua vim.lsp.buf.hover()<cr>", "Show hover" },
     v = { "<cmd>:MarkdownPreviewToggle<CR>", "markdown viewer live" },
     g = { "<cmd>:Glow<CR>", "markdown viewer inside vim" },
     c = { "<cmd>:PickColor<CR>", "Color picker" },
@@ -264,16 +270,18 @@ lvim.builtin.which_key.mappings[";"] = {
 }
 lvim.builtin.which_key.mappings["s"] = {
   name = "Search",
-  s = { "<cmd>Telescope live_grep theme=ivy<cr>", "Live Grep inside project files"},
+  s = { "<cmd>Telescope current_buffer_fuzzy_find<cr>", "Seacrh currnet file" },
+  a = { "<cmd>Telescope live_grep theme=ivy<cr>", "Live Grep inside all project"},
+  f = { "<cmd>Telescope find_files<cr>", "Find File" },
+  --------spector-----------
   p = { '<cmd>lua require("spectre").toggle()<CR>', "Toggle Spectre"},
   w = { '<cmd>lua require("spectre").open_visual({select_word=true})<CR>', "Spectre curent word"},
   W = {'<esc><cmd>lua require("spectre").open_visual()<CR>', "Search Visual word"},
   F = {'<cmd>lua require("spectre").open_file_search({select_word=true})<CR>', "spectre on current File"},
-  --
+  --------------------------
   b = { "<cmd>Telescope git_branches<cr>", "Checkout branch" },
   -- c = { "<cmd>Telescope colorscheme<cr>", "Colorscheme" },
-  t = { "<cmd>Telescope live_grep<cr>", "Text" },
-  f = { "<cmd>Telescope find_files<cr>", "Find File" },
+  -- t = { "<cmd>Telescope live_grep<cr>", "Text" },
   h = { "<cmd>Telescope help_tags<cr>", "Find Help" },
   H = { "<cmd>Telescope highlights<cr>", "Find highlight groups" },
   M = { "<cmd>Telescope man_pages<cr>", "Man Pages" },
