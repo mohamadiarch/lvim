@@ -2,12 +2,13 @@
 -- User Commands should be Uppercase
 -- windows path
 
--- config files
+-- config files------------Rc
 -- : lvimreload
 vim.cmd([[
   command! Vimrc tabe C:\Users\mohammadi\AppData\Local\lvim\config.lua
-  command! VimrcLunar tabe C:\Users\mohammadi\AppData\Roaming\lunarvim\lvim\init.lua
-  command! VimrcWhichKey tabe C:\Users\mohammadi\AppData\Roaming\lunarvim\lvim\lua\lvim\core\whick-key.lua
+  command! RcLvim tabe C:\Users\mohammadi\AppData\Local\lvim\config.lua
+  command! RcLunar tabe C:\Users\mohammadi\AppData\Roaming\lunarvim\lvim\init.lua
+  command! RcWhichKey tabe C:\Users\mohammadi\AppData\Roaming\lunarvim\lvim\lua\lvim\core\which-key.lua
 ]])
 -- lvim docs--------------doc
 vim.cmd([[
@@ -20,6 +21,7 @@ vim.cmd([[
 --personal notes-------------note
 vim.cmd([[
   command! EE tabe C:\Users\mohammadi\AppData\Local\lvim\doc\e.md
+  command! Train tabe C:\Users\mohammadi\AppData\Local\lvim\doc\train.md
   command! NoteME tabe C:\Users\mohammadi\AppData\Local\lvim\doc\note.md
   command! NoteMyMind tabe C:\Users\mohammadi\AppData\Local\lvim\doc\mymind.md
 ]])

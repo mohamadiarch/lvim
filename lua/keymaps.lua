@@ -57,10 +57,11 @@ vim.api.nvim_set_keymap("n", "<M-5>", "<esc><cmd>:w<CR><cmd>:TermCurrentV<CR>", 
 -- vim.api.nvim_set_keymap("n", "<F5>", "<cmd>!python % <CR>", {}) -- run programs
 
 lvim.lsp.buffer_mappings.normal_mode["K"] = nil    -- <leader>kk
-vim.keymap.set({'n', 'x', 'o'}, 'H', '^')
+vim.keymap.set({'n', 'x', 'o'}, 'H', '^')  -- 0w == ^
 vim.keymap.set({'n', 'x', 'o'}, 'L', '$')
 vim.keymap.set({'n', 'x', 'o'}, 'K', '6k')    
 vim.keymap.set({'n', 'x', 'o'}, 'J', '6j')
+vim.keymap.set({'n'}, '<C-d>', 'diw') --delete whole word even you were in the middle
 
 vim.api.nvim_set_keymap("n", "<space>1", "<esc><cmd>:BufferLineGoToBuffer 1<CR>", {}) 
 vim.api.nvim_set_keymap("n", "<space>2", "<esc><cmd>:BufferLineGoToBuffer 2<CR>", {}) 
@@ -258,7 +259,7 @@ wk.register({
 lvim.builtin.which_key.mappings["h"] = {
   name="find",
   h={
-    { "<cmd>nohlsearch<CR>", "No Highlight" },
+    { "<cmd>set hls!<CR>", "Toggle Highlight" },
   }
 }
 
