@@ -1,6 +1,6 @@
    Vim Cheat Sheet             
 
-
+:help index
 
 [Vim Cheat Sheet](/)
 ====================

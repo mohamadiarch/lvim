@@ -9,8 +9,9 @@ require("commands")
 require("keymaps")
 require("doc")
 require("plugins")
-require("myplugins")
+require("plugins_config")
 require("LSP")
+require("plugins_config.core.nvimtree")
 -- require("telescope")
 
 

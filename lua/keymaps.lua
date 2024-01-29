@@ -62,6 +62,19 @@ vim.keymap.set({'n', 'x', 'o'}, 'L', '$')
 vim.keymap.set({'n', 'x', 'o'}, 'K', '6k')    
 vim.keymap.set({'n', 'x', 'o'}, 'J', '6j')
 vim.keymap.set({'n'}, '<C-d>', 'diw') --delete whole word even you were in the middle
+vim.keymap.set({'n'}, '<C-e>', '3e')
+vim.keymap.set({'n'}, '<C-b>', '3b')
+
+
+
+
+
+
+
+
+
+
+
 
 vim.api.nvim_set_keymap("n", "<space>1", "<esc><cmd>:BufferLineGoToBuffer 1<CR>", {}) 
 vim.api.nvim_set_keymap("n", "<space>2", "<esc><cmd>:BufferLineGoToBuffer 2<CR>", {}) 

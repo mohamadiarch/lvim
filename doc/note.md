@@ -9,10 +9,14 @@ git green
 
 ## file explorer
 open multiple files
-go to end of folder in list
 preview on file plugin or repeat command?
-
+5j and 5k in file explorer
 
 # line
 add margin to the end of line
-who to go next warp line
+
+
+## script
+$ echo 'mkfile() { mkdir -p "$(dirname "$1")" && touch "$1" ;  }' >> ~/.bashrc
+$ source ~/.bashrc
+$ mkfile /your/directory/yourFile.txt
