@@ -1,16 +1,23 @@
 
 ## install dependencies in windows
 Have git, make, pip, python, npm, node and cargo and PowerShell 7+  installed on your system.
-1. install chocolatey
-2. install git, python and nodejs
-3. choco install make
-4. for install cargo you need to download a compiler to be able to compile Lua (e.g: mingw) and add it to the Path.
-5. install mingw: https://github.com/niXman/mingw-builds-binaries/releases
+1. install neovim
+2. install git, python and nodejs: npm install -g yarn
+4. install rust and cargo
+5. install Chocolatey
+3. choco install make : you should open it as admin
+7. install lunarvim from your fork: see below
+5. install mingw: choco install mingw  or https://github.com/niXman/mingw-builds-binaries/releases
 6. then you can clone your git
+7. install nerdfonts: Fira, Hack. Also set the fonts in terminal
+8. choco install fd ==> find files in first page: https://github.com/sharkdp/fd
+9. choco install glow ==> markdown privew: https://github.com/charmbracelet/glow
+13. choco instll sed ==> nvim-spectre
+14. add chrome to path
+15. clone repos
 
 
-
-## Windows
+## FORK Windows
 1. create a folder in path: C:\Users\mohammadi\AppData\Roaming\lunarvim
 2. git clone https://github.com/mohamadiarch/lunarvim.git
 3. run `install.ps1` in powershell 7 for installing dependencies

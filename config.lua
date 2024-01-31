@@ -6,8 +6,10 @@
 
 require("options")
 require("commands")
-require("keymaps")
 require("doc")
+require("web")
+require("local_commands")
+require("keymaps")
 require("plugins")
 require("plugins_config")
 require("LSP")
