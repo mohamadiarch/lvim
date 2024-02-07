@@ -8,6 +8,7 @@
 :codiumdisalbe  # disable coduime
 :addproject     # add current folder to project managment
 :LvimReload      # reload lvim like source %
+:Mason          # ctrl+f use d or down arrow not space
 ```
 
 

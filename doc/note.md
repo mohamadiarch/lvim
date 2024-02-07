@@ -1,4 +1,9 @@
 
+## python
+enumerate
+List flatteningj 
+python-workarounds
+
 
 ## todo
 path of docs

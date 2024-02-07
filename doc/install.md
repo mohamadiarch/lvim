@@ -3,18 +3,26 @@
 Have git, make, pip, python, npm, node and cargo and PowerShell 7+  installed on your system.
 1. install neovim
 2. install git, python and nodejs: npm install -g yarn
-4. install rust and cargo
-5. install Chocolatey
-3. choco install make : you should open it as admin
-7. install lunarvim from your fork: see below
-5. install mingw: choco install mingw  or https://github.com/niXman/mingw-builds-binaries/releases
-6. then you can clone your git
-7. install nerdfonts: Fira, Hack. Also set the fonts in terminal
-8. choco install fd ==> find files in first page: https://github.com/sharkdp/fd
-9. choco install glow ==> markdown privew: https://github.com/charmbracelet/glow
-13. choco instll sed ==> nvim-spectre
+3. install rust and cargo
+4. install Chocolatey
+5. choco install make : you should open it as admin
+6. install lunarvim from your fork: see below
+7. install mingw: choco install mingw  or https://github.com/niXman/mingw-builds-binaries/releases
+8. then you can clone your git
+9. install nerdfonts: Fira, Hack. Also set the fonts in terminal
+10. choco install fd ==> find files in first page: https://github.com/sharkdp/fd
+11. choco install glow ==> markdown privew: https://github.com/charmbracelet/glow
+12. choco instll sed ==> nvim-spectre
+13. choco install ripgrep ==> nvim-spectre
 14. add chrome to path
-15. clone repos
+16. Install linters with :Mason
+15. clone repos and change path of docs
+
+
+
+
+## MVP
+wt.exe -d .
 
 
 ## FORK Windows

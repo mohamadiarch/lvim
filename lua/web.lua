@@ -27,6 +27,7 @@ vim.cmd([[
 vim.cmd([[
   command! VebNeovimQRef !chrome https://neovim.io/doc/user/quickref.html
   command! VebLuaGuide !chrome https://github.com/nanotee/nvim-lua-guide
+  command! VebAwsome !chrome https://github.com/rockerBOO/awesome-neovim#readme
 ]])
 
 ----websites for frontend-------Front

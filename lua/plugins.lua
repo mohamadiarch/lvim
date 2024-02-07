@@ -28,6 +28,8 @@ lvim.plugins={
 "dkarter/bullets.vim",
 "norcalli/nvim-colorizer.lua",
 "ziontee113/color-picker.nvim",
+  "benfowler/telescope-luasnip.nvim",
+  "honza/vim-snippets",
 {
   "folke/todo-comments.nvim",
   dependencies = { "nvim-lua/plenary.nvim" },

@@ -3,6 +3,11 @@
 -- windows path
 local username = "\\moham"
 local cheatpath = "H:\\offline_prog\\cheat"
+local offline_prog = "H:\\offline_prog"
+local pluginpath = "C:\\Users" .. username .."\\AppData\\Roaming\\lunarvim\\site\\pack\\lazy\\opt"
+
+
+
 
 -- config files---------------------Rc--------------------------------------------------------------
 -- : lvimreload
@@ -21,7 +26,10 @@ vim.api.nvim_exec(RcLvim, true)
 local RcLunar="command! RcLunar tabe C:\\Users" ..username .."\\AppData\\Roaming\\lunarvim\\lvim\\init.lua"
 vim.api.nvim_exec(RcLunar, true)
 
-local RcWhichKey="command! RcWhichKey tabe C:\\Users" ..username .."\\AppData\\Roaming\\lunarvim\\lvim\\core\\which-key.lua"
+local RcWhichKeyCore="command! RcWhichKeyCore tabe C:\\Users" ..username .."\\AppData\\Roaming\\lunarvim\\lvim\\lua\\lvim\\core\\which-key.lua"
+vim.api.nvim_exec(RcWhichKeyCore, true)
+
+local RcWhichKey="command! RcWhichKey tabe C:\\Users" ..username .."\\AppData\\Local\\lvim\\lua\\keymaps.lua"
 vim.api.nvim_exec(RcWhichKey, true)
 
 
@@ -46,6 +54,9 @@ vim.api.nvim_exec(DocTutorVim, true)
 local DocLua="command! DocLua tabe C:\\Users" ..username .."\\AppData\\Local\\lvim\\doc\\lua.md"
 vim.api.nvim_exec(DocLua, true)
 
+
+
+
 -- --personal notes-------------note-----------------------------------------------------------------------
 -- vim.cmd([[
 --   command! EE tabe C:\Users\mohammadi\AppData\Local\lvim\doc\e.md
@@ -65,6 +76,9 @@ vim.api.nvim_exec(NoteME, true)
 
 local NoteMyMind="command! NoteMyMind tabe C:\\Users" ..username .."\\AppData\\Local\\lvim\\doc\\mymind.md"
 vim.api.nvim_exec(NoteMyMind, true)
+
+local NoteXournal="command! NoteXournal tabe " .. offline_prog .. "\\list\\raodmap\\myroadmap\\xournals\\xournal.md"
+vim.api.nvim_exec(NoteXournal, true)
 
 
 
@@ -117,6 +131,9 @@ vim.api.nvim_exec(DocLinux, true)
 
 
 
--- linux path
 
 
+-- --plugin files-------------Plg-----------------------------------------------------------------------
+
+local PlgSnippet="command! PlgSnippet tabe " .. pluginpath .. "\\vim-snippets\\snippets\\python.snippets"
+vim.api.nvim_exec(PlgSnippet, true)
