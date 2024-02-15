@@ -19,6 +19,21 @@ lvim.plugins={
     end
 },
 "CRAG666/code_runner.nvim",
+{
+  "ray-x/lsp_signature.nvim",
+  event = "VeryLazy",
+  opts = {},
+  config = function(_, opts) require'lsp_signature'.setup(opts) end
+},
+{
+  "amrbashir/nvim-docs-view",
+  lazy = true,
+  cmd = "DocsViewToggle",
+  opts = {
+    position = "right",
+    width = 60
+  }
+},
 -- you need to install install code-minimap
 -- windows: ------> scoop bucket add extras  -----> scoop install code-minimap
 "wfxr/minimap.vim",  
@@ -26,10 +41,13 @@ lvim.plugins={
 "nvim-treesitter/playground",
 "wakatime/vim-wakatime",
 "dkarter/bullets.vim",
+'nvim-lua/completion-nvim',
 "norcalli/nvim-colorizer.lua",
 "ziontee113/color-picker.nvim",
   "benfowler/telescope-luasnip.nvim",
   "honza/vim-snippets",
+  "AckslD/swenv.nvim",
+  "stevearc/dressing.nvim",
 {
   "folke/todo-comments.nvim",
   dependencies = { "nvim-lua/plenary.nvim" },
@@ -90,17 +108,17 @@ lvim.plugins={
     })
   end,
 },
--- {
---   'Exafunction/codeium.vim',
---   config = function ()
---     -- Change '<C-g>' here to any keycode you like.
---     vim.keymap.set('i', '<space>gg', function () return vim.fn['codeium#Accept']() end, { expr = true, silent = true })
---     vim.keymap.set('i', '<c-h>', function() return vim.fn['codeium#CycleCompletions'](1) end, { expr = true, silent = true })
---     vim.keymap.set('i', '<c-l>', function() return vim.fn['codeium#CycleCompletions'](-1) end, { expr = true, silent = true })
---     vim.keymap.set('i', '<c-x>', function() return vim.fn['codeium#Clear']() end, { expr = true, silent = true })
---     vim.keymap.set('i', '<C-k>', function() return vim.fn['codeium#Complete']() end, { expr = true, silent = true })
---   end
--- },
+{
+  'Exafunction/codeium.vim',
+  config = function ()
+    -- Change '<C-g>' here to any keycode you like.
+    vim.keymap.set('i', '<space>gg', function () return vim.fn['codeium#Accept']() end, { expr = true, silent = true })
+    vim.keymap.set('i', '<c-h>', function() return vim.fn['codeium#CycleCompletions'](1) end, { expr = true, silent = true })
+    vim.keymap.set('i', '<c-l>', function() return vim.fn['codeium#CycleCompletions'](-1) end, { expr = true, silent = true })
+    vim.keymap.set('i', '<c-x>', function() return vim.fn['codeium#Clear']() end, { expr = true, silent = true })
+    vim.keymap.set('i', '<C-k>', function() return vim.fn['codeium#Complete']() end, { expr = true, silent = true })
+  end
+},
 -- {
   -- doc created by freecodecamp. you can download it it your neovim
   -- "luckasRanarison/nvim-devdocs",

@@ -16,7 +16,13 @@ lspconfig.emmet_ls.setup({
   },
 })
 
-require('telescope').load_extension('luasnip')
+-- require('telescope').load_extension('luasnip')
+-- lvim.builtin.telescope.load_extension('luasnip')
+
+lvim.builtin.telescope.on_config_done = function(telescope)
+  pcall(telescope.load_extension, "luasnip")
+  -- any other extensions loading
+end
 
 -- https://github.com/jose-elias-alvarez/null-ls.nvim/blob/main/doc/BUILTINS.md#Configuration
 -- https://github.com/LunarVim/starter.lvim --branches

@@ -68,10 +68,12 @@ vim.keymap.set({'n'}, '<C-b>', '3b')
 
 
 
+vim.keymap.set({ 'n' }, '<C-k>', function()       require('lsp_signature').toggle_float_win()
+end, { silent = true, noremap = true, desc = 'toggle signature' })
 
 
 
-
+vim.keymap.set('n', '<c-z>', '<cmd>Lspsaga hover_doc')
 
 
 
@@ -132,6 +134,14 @@ lvim.builtin.cmp.mapping["<Tab>"] = cmp_mapping(function(fallback)
   end
 end, { "i", "s" })
 
+
+
+-- add `pyright` to `skipped_servers` list
+vim.list_extend(lvim.lsp.automatic_configuration.skipped_servers, { "pyright" })
+-- remove `jedi_language_server` from `skipped_servers` list
+lvim.lsp.automatic_configuration.skipped_servers = vim.tbl_filter(function(server)
+  return server ~= "jedi_language_server"
+end, lvim.lsp.automatic_configuration.skipped_servers)
 
 -- -- Run Programs by space+r inside vim
 -- local function run_curr_python_file()
@@ -285,6 +295,7 @@ lvim.builtin.which_key.mappings[";"] = {
 lvim.builtin.which_key.mappings["s"] = {
   name = "Search",
   s = { "<cmd>Telescope current_buffer_fuzzy_find<cr>", "Seacrh currnet file" },
+  S = { "<cmd>Telescope luasnip theme=ivy<cr>", "snippet list"},
   a = { "<cmd>Telescope live_grep theme=ivy<cr>", "Live Grep inside all project"},
   f = { "<cmd>Telescope find_files<cr>", "Find File" },
   --------spector-----------
