@@ -1,7 +1,24 @@
 # Train
 ## I can train vim whenever I want
+        "<leader>u",
+        "<cmd>Telescope undo theme=ivy<cr>",
+        desc = "undo history",
+zzidafd
+//console.log("15")
 
-
+dafd
+af
+sd
+fa
+sd
+fa
+sd
+fa
+f
+dsfa
+sd
+fs
+d
 SORT command is used to sort a file, arranging the records in a particular order. By default, the sort command sorts file assuming the contents are ASCII. Using options in the sort command can also be used to sort numerically. 
 
 command sorts the contents of a text file, line by line.
@@ -17,3 +34,11 @@ Lines starting with a uppercase letter will appear before lines starting with th
 Examples
 
 Suppose you create a data file with name file.txt: 
+
+
+//console.log("15")
+console.log("15")
+console.log("15")
+console.log("15")
+console.log("15")
+console.log("15")

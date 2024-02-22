@@ -56,7 +56,24 @@ vim.api.nvim_set_keymap("n", "<M-5>", "<esc><cmd>:w<CR><cmd>:TermCurrentV<CR>", 
 ----------------- <F1> <F12>
 -- vim.api.nvim_set_keymap("n", "<F5>", "<cmd>!python % <CR>", {}) -- run programs
 
+
+
+
 lvim.lsp.buffer_mappings.normal_mode["K"] = nil    -- <leader>kk
+vim.keymap.set({'n', 'x', 'o'}, 'zh', 'H') -- H default key for top of screen
+vim.keymap.set({'n', 'x', 'o'}, 'zl', 'L') -- L default key for bottom of screen
+vim.keymap.set({'n', 'x', 'o'}, 'zm', 'M') -- M default key for Middle of screen
+
+vim.keymap.set({'n', 'x', 'o'}, 'zy', '<C-y>') -- scroll one line above
+vim.keymap.set({'n', 'x', 'o'}, 'ze', '<C-e>') -- scroll one line bottom 
+
+vim.keymap.set({'n', 'x', 'o'}, '<C-f>', '<C-d>') -- use <C-f> <C-u> for semi page navigation
+-- vim.keymap.set({'n', 'x', 'o'}, 'zi', '<C-b>')  -- move a 1 page screen up 
+-- vim.keymap.set({'n', 'x', 'o'}, 'zu', '<C-u>')  -- move a 0.5 page screen up 
+-- vim.keymap.set({'n', 'x', 'o'}, 'zf', '<C-f>')  ---- move a 1 page screen down
+-- vim.keymap.set({'n', 'x', 'o'}, 'zd', '<C-d>')  ---- move a 0.5 page screen down 
+-- in my case: [zz + zt + zb ] + [ zh + zl + zm ] + [zy + ze] 
+
 vim.keymap.set({'n', 'x', 'o'}, 'H', '^')  -- 0w == ^
 vim.keymap.set({'n', 'x', 'o'}, 'L', '$')
 vim.keymap.set({'n', 'x', 'o'}, 'K', '6k')    
@@ -64,16 +81,16 @@ vim.keymap.set({'n', 'x', 'o'}, 'J', '6j')
 vim.keymap.set({'n'}, '<C-d>', 'diw') --delete whole word even you were in the middle
 vim.keymap.set({'n'}, '<C-e>', '3e')
 vim.keymap.set({'n'}, '<C-b>', '3b')
+vim.keymap.set({'n'}, 'j', 'gj') -- if long lines wraps
+vim.keymap.set({'n'}, 'k', 'gk') -- if long lines wraps
 
 
 
 
-vim.keymap.set({ 'n' }, '<C-k>', function()       require('lsp_signature').toggle_float_win()
-end, { silent = true, noremap = true, desc = 'toggle signature' })
 
 
 
-vim.keymap.set('n', '<c-z>', '<cmd>Lspsaga hover_doc')
+-- vim.api.nvim_set_keymap("i", "<c-z>", "<cmd>lua require('lsp_signature').toggle_float_win()<CR>", {}) -- enter in normal mode
 
 
 
@@ -118,14 +135,17 @@ lvim.builtin.telescope.defaults.mappings = {
 -- lvim.builtin.cmp.mapping["<C-b>"] = cmp_mapping.close()
 lvim.builtin.cmp.mapping["<C-e>"] = nil    -- this is for abbortion cmp popup, I write a code with <C-b> fot toggle
 lvim.builtin.cmp.mapping["<Tab>"] = nil
+lvim.builtin.cmp.mapping["<C-p>"] = nil
 lvim.builtin.cmp.mapping["<Down>"] = nil  -- when cmp pop is open you can navigate with down
 lvim.builtin.cmp.mapping["<Up>"] = nil    -- when cmp pop is open you can navigate with up
-lvim.builtin.cmp.mapping["<C-k>"]  = nil  -- still works I dont know why
-lvim.builtin.cmp.mapping["<C-j>"]  = nil  -- still works I dont know why
+-- lvim.builtin.cmp.mapping["<C-k>"]  = nil  -- still works I dont know why
+-- lvim.builtin.cmp.mapping["<C-j>"]  = nil  -- still works I dont know why
+vim.api.nvim_set_keymap("i", "<c-o>", "<cmd>lua vim.lsp.buf.hover()<cr>", {}) 
 lvim.builtin.cmp.mapping["K"] = cmp_mapping.select_prev_item()  -- shift+ k jump in menu
 lvim.builtin.cmp.mapping["J"] = cmp_mapping.select_next_item()   -- shift+ j jump in menu
 -- tab is not for jump in compeltion menu and ai accept
 -- tab is just for jumping in snippet palceholder
+
 lvim.builtin.cmp.mapping["<Tab>"] = cmp_mapping(function(fallback)
   if luasnip.expand_or_locally_jumpable() then
     luasnip.expand_or_jump()
@@ -207,7 +227,6 @@ vim.api.nvim_create_user_command("Dict", serach_dictionary, { desc = "Search wor
 
 
 
-
 -- flash.nvim
 wk.register({
   p={
@@ -220,6 +239,7 @@ wk.register({
     name="vscode",
     -- <leader>sk  list of shortkeys
     k=  { "<cmd>lua vim.lsp.buf.hover()<cr>", "Show hover" },
+    l= {"<cmd>lua require('lsp_signature').toggle_float_win()<CR>","lsp signature"},
     v = { "<cmd>:MarkdownPreviewToggle<CR>", "markdown viewer live" },
     g = { "<cmd>:Glow<CR>", "markdown viewer inside vim" },
     c = { "<cmd>:PickColor<CR>", "Color picker" },
@@ -307,6 +327,7 @@ lvim.builtin.which_key.mappings["s"] = {
   b = { "<cmd>Telescope git_branches<cr>", "Checkout branch" },
   -- c = { "<cmd>Telescope colorscheme<cr>", "Colorscheme" },
   -- t = { "<cmd>Telescope live_grep<cr>", "Text" },
+  u = { "<cmd>Telescope undo theme=ivy<cr>", "undo history"},
   h = { "<cmd>Telescope help_tags<cr>", "Find Help" },
   H = { "<cmd>Telescope highlights<cr>", "Find highlight groups" },
   M = { "<cmd>Telescope man_pages<cr>", "Man Pages" },

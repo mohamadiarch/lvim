@@ -2,6 +2,9 @@
 
 require("telescope").load_extension "file_browser"
 require'telescope'.load_extension('project')
+require'telescope'.load_extension("undo")
+
+
 
 
 -- vim.api.nvim_set_keymap(
