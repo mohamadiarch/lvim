@@ -86,6 +86,12 @@ vim.keymap.set({'n'}, 'k', 'gk') -- if long lines wraps
 
 
 
+--------------------------terminal mode-----------------------
+vim.keymap.set({'t'}, 'jj', '<C-\\><C-N><C-w>') -- jj for normal mode
+vim.keymap.set({'t'}, 'qq', '<C-a>exit') -- qq for exit [delete input then type exit]
+
+
+
 
 
 
@@ -156,12 +162,8 @@ end, { "i", "s" })
 
 
 
--- add `pyright` to `skipped_servers` list
-vim.list_extend(lvim.lsp.automatic_configuration.skipped_servers, { "pyright" })
--- remove `jedi_language_server` from `skipped_servers` list
-lvim.lsp.automatic_configuration.skipped_servers = vim.tbl_filter(function(server)
-  return server ~= "jedi_language_server"
-end, lvim.lsp.automatic_configuration.skipped_servers)
+
+
 
 -- -- Run Programs by space+r inside vim
 -- local function run_curr_python_file()

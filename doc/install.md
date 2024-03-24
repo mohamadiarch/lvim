@@ -3,7 +3,7 @@
 Have git, make, pip, python, npm, node and cargo and PowerShell 7+  installed on your system.
 1. install neovim
 2. install git, python and nodejs: npm install -g yarn
-3. install rust and cargo
+3. install rust and cargo : wsl: curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 4. install Chocolatey
 5. choco install make : you should open it as admin
 6. install lunarvim from your fork: see below
@@ -14,9 +14,11 @@ Have git, make, pip, python, npm, node and cargo and PowerShell 7+  installed on
 11. choco install glow ==> markdown privew: https://github.com/charmbracelet/glow
 12. choco instll sed ==> nvim-spectre
 13. choco install ripgrep ==> nvim-spectre
+14. choco install zig ===> treesitter compiler
 14. add chrome to path
 16. Install linters with :Mason
 15. clone repos and change path of docs
+16. `Set-Alias lvim -Value "C:\Users\moham\AppData\Roaming\lunarvim\lvim\utils\bin\lvim.ps1"` ===> if you want to set another alias
 
 
 

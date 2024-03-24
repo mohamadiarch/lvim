@@ -1,5 +1,22 @@
 
+-- https://www.lunarvim.org/docs/1.2/configuration/custom-snippets
+-- you can create custome snippet in two ways:
+-- 1. json format ===>  friendly-snippets
+-- 2. lua format  ===>  LuaSnip
+--------------------------------------------------------------------------
 -- There's extra snippets included in this repo but they are not added by default,
 --  since it would be irrelevant for people not using those frameworks.
--- add friendly-snippets for framwworks in LuaSnip
+-- add friendly-snippets for frameworks in LuaSnip
 -- require'luasnip'.filetype_extend("python", {"django"})
+---------------------------------------------------------------------
+-- list of all snippets
+-- benfowler/telescope-luasnip.nvim ===> telescope luasnip
+-- I set a keymap for it: <space>sS  ==> load vim-snippets and friendly-snippets bcz both work with luasnip engine
+-- :LuaSnipListAvailable  ===> lunarvim
+-- :PlgSnippetFriendly  ===> list of friendly-snippets in directory
+-- :PlgSnippet  ===>        list of vim-snippets in directory
+--------------------------------------------------------------------
+-- L3MON4D3/LuaSnip is installed with lunarvim ===> engine
+-- I installed personally "honza/vim-snippets" 
+-- rafamadriz/friendly-snippets is installed with lunarvim
+---------------------------------------------------------------------------

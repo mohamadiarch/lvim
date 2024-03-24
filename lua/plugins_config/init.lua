@@ -4,8 +4,14 @@ require("telescope").load_extension "file_browser"
 require'telescope'.load_extension('project')
 require'telescope'.load_extension("undo")
 
+-- lvim.builtin.telescope.on_config_done = function(telescope)
+--   pcall(telescope.load_extension, "file_browser")
+--   pcall(telescope.load_extension, "project")
+--   pcall(telescope.load_extension, "undo")
+-- end
 
 
+require 'nvim-treesitter.install'.compilers = { 'zig' }
 
 -- vim.api.nvim_set_keymap(
 --   "n",
