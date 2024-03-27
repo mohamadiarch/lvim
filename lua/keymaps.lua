@@ -74,13 +74,14 @@ vim.keymap.set({'n', 'x', 'o'}, '<C-f>', '<C-d>') -- use <C-f> <C-u> for semi pa
 -- vim.keymap.set({'n', 'x', 'o'}, 'zd', '<C-d>')  ---- move a 0.5 page screen down 
 -- in my case: [zz + zt + zb ] + [ zh + zl + zm ] + [zy + ze] 
 
-vim.keymap.set({'n', 'x', 'o'}, 'H', '^')  -- 0w == ^
-vim.keymap.set({'n', 'x', 'o'}, 'L', '$')
+vim.keymap.set({'n', 'x', 'o'}, 'H', '4b')  -- 0w == ^
+vim.keymap.set({'n', 'x', 'o'}, 'L', '4e') --$
 vim.keymap.set({'n', 'x', 'o'}, 'K', '6k')    
 vim.keymap.set({'n', 'x', 'o'}, 'J', '6j')
 vim.keymap.set({'n'}, '<C-d>', 'diw') --delete whole word even you were in the middle
 vim.keymap.set({'n'}, '<C-e>', '3e')
 vim.keymap.set({'n'}, '<C-b>', '3b')
+vim.keymap.set({'n'}, 'gG', 'gg^vG$')  -- select all lines [gg - G - gG]
 vim.keymap.set({'n'}, 'j', 'gj') -- if long lines wraps
 vim.keymap.set({'n'}, 'k', 'gk') -- if long lines wraps
 
@@ -231,6 +232,23 @@ vim.api.nvim_create_user_command("Dict", serach_dictionary, { desc = "Search wor
 
 -- flash.nvim
 wk.register({
+  b={
+    name = "Buffers",  
+    g = { "<cmd>BuffergatorToggle<cr>", "buffer gator" },  -- list of buffers as a navbar
+    p = { "<cmd>BufferLineTogglePin<cr>", "Pin"},  -- pin buffer
+    -- w = { "<cmd>BufferWipeout<cr>", "Wipeout" }, -- TODO: implement this for bufferline
+    h = { "<cmd>BufferLineMovePrev<cr>", "move to prev" },
+    l = { "<cmd>BufferLineMoveNext<cr>", "move to next" },
+    H = { "<cmd>BufferLineCloseLeft<cr>", "Close all to the left" },
+    L = {
+      "<cmd>BufferLineCloseRight<cr>",
+      "Close all to the right",
+    },
+    S = {
+      "<cmd>BufferLineSortByExtension<cr>",
+      "Sort by language",
+    },
+  },
   p={
     -- there is lots of mapping with p in lunarvimg config
     name = "plugins",

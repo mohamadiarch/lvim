@@ -1,0 +1,28 @@
+
+
+{
+    "!d": {
+      "prefix": "!t",
+      "body": [
+            "{% load static %}",
+            "<!-- STATICS_DIRS =[ BASE_DIR / 'static']]-->",
+            "<!-- TEMPLATES = [{ DIRS =[ BASE / 'templates']}] -->",
+            "<!DOCTYPE html>",
+            "<html lang=\"en\">",
+            "\t<head>",
+            "\t\t<meta charset=\"UTF-8\">",
+            "\t\t<meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">",
+            "\t\t<title>{% block page_title %}Document{% endblock%}</title>",
+            "\t\t<link rel=\"stylesheet\" href=\"{% static 'css/style.css$0' %}\">",
+            "\t\t{% block css_files %}{% endblock %}",
+            "\t</head>",
+            "\t<body>",
+            "\t{% block content %}{% endblock %} ",
+            "\t</body>",
+            "</html>"
+      ],
+      "description": "HTML template inheritance"
+    }
+
+    
+}

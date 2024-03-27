@@ -85,6 +85,7 @@ lvim.plugins={
 "wfxr/minimap.vim",  
 "petertriho/nvim-scrollbar",
 "nvim-treesitter/playground",
+'jeetsukumaran/vim-buffergator',
 "wakatime/vim-wakatime",
 "dkarter/bullets.vim",
 'nvim-lua/completion-nvim',

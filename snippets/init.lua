@@ -20,3 +20,4 @@
 -- I installed personally "honza/vim-snippets" 
 -- rafamadriz/friendly-snippets is installed with lunarvim
 ---------------------------------------------------------------------------
+

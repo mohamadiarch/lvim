@@ -1,5 +1,7 @@
 
+-- snippets------------
 
+require'luasnip'.filetype_extend("python", {"django"})
 local lspconfig = require("lspconfig")
 
 lspconfig.emmet_ls.setup({
@@ -15,6 +17,7 @@ lspconfig.emmet_ls.setup({
     "tsx",
   },
 })
+-- snippets------------
 
 -- require('telescope').load_extension('luasnip')
 -- lvim.builtin.telescope.load_extension('luasnip')
@@ -30,10 +33,11 @@ local formatters = require "lvim.lsp.null-ls.formatters"
 local linters = require "lvim.lsp.null-ls.linters" 
 ----------------------------------python-----------------------------------------
 -- add `pyright` to `skipped_servers` list
-vim.list_extend(lvim.lsp.automatic_configuration.skipped_servers, { "pyright" })
+vim.list_extend(lvim.lsp.automatic_configuration.skipped_servers, { "jedi_language_server" })
+-- :LvimCacheReset
 -- remove `jedi_language_server` from `skipped_servers` list
 lvim.lsp.automatic_configuration.skipped_servers = vim.tbl_filter(function(server)
-  return server ~= "jedi_language_server"
+  return server ~= "pyright"
 end, lvim.lsp.automatic_configuration.skipped_servers)
 
 --install with :Mason first
@@ -44,9 +48,10 @@ linters.setup { { command = "flake8",
 } }  -- https://flake8.pycqa.org/en/latest/user/options.html
 
 -------------------------------yaml--------------------------------------------
--- add `pyright` to `skipped_servers` list
-vim.list_extend(lvim.lsp.automatic_configuration.skipped_servers, { "yaml-language-server" })
 -- remove `jedi_language_server` from `skipped_servers` list
+vim.list_extend(lvim.lsp.automatic_configuration.skipped_servers, { "yaml-language-server" })
+-- :LvimCacheReset
+-- add `pyright` to `skipped_servers` list
 lvim.lsp.automatic_configuration.skipped_servers = vim.tbl_filter(function(server)
   return server ~= "spectral-language-server"
 end, lvim.lsp.automatic_configuration.skipped_servers)

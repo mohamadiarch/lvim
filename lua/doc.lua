@@ -133,12 +133,16 @@ vim.api.nvim_exec(DocLinux, true)
 
 
 
+-- --snippet files-------------Snippet-----------------------------------------------------------------------
+
+local SnippetVim = "command! SnippetVim tabe " .. pluginpath .. "\\vim-snippets\\snippets\\python.snippets"
+vim.api.nvim_exec(SnippetVim, true)
+
+local SnippetFriendly = "command! SnippetFriendly tabe " .. pluginpath .. "\\friendly-snippets\\snippets\\python\\base.json"
+vim.api.nvim_exec(SnippetFriendly, true)
+
+local SnippetsPersonal = "command! SnippetPersonal tabe C:\\Users" .. username .. "\\AppData\\Local\\lvim\\snippets\\python.json"
+vim.api.nvim_exec(SnippetsPersonal, true)
+
+
 -- --plugin files-------------Plg-----------------------------------------------------------------------
-
-local PlgSnippet = "command! PlgSnippet tabe " .. pluginpath .. "\\vim-snippets\\snippets\\python.snippets"
-vim.api.nvim_exec(PlgSnippet, true)
-
-local PlgSnippetFriendly = "command! PlgSnippetFriendly tabe " ..
-pluginpath .. "\\friendly-snippets\\snippets\\python\\base.json"
-vim.api.nvim_exec(PlgSnippetFriendly, true)
-

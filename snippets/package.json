@@ -11,6 +11,10 @@
           "path": "./python.json"
         },
         {
+          "language": "python",
+          "path": "./django.json"
+        },
+        {
           "language": "markdown",
           "path": "./markdown.json"
         },
