@@ -3,6 +3,13 @@
 -- you can create custome snippet in two ways:
 -- 1. json format ===>  friendly-snippets
 -- 2. lua format  ===>  LuaSnip
+-- ---------------------json format---------------------------
+--  "New function": {
+    -- "prefix": "def",
+    -- "body": "def ${1:fname}(${2:arg}):\n\t${3:pass}$0",
+    -- "description": "Code snippet for function definition."
+  -- },
+ ---------------------------------------------------------- 
 --------------------------------------------------------------------------
 -- There's extra snippets included in this repo but they are not added by default,
 --  since it would be irrelevant for people not using those frameworks.

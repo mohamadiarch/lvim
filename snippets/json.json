@@ -1,0 +1,17 @@
+
+
+{
+    "snip": {
+      "prefix": "snip",
+      "body": [
+            "\"${1:func}\": {",
+            "\t\"prefix\": \"${2:prefix}\",",
+            "\t\"body\": [${3:body}],",
+            "\t\"description\": \"${4:desc}\"",
+            "}"
+      ],
+      "description": "Freindly-Snippet json format"
+    }
+    
+    
+}

@@ -21,7 +21,12 @@
         {
           "language": "html",
           "path": "./html.json"
-        }
+        },
+        {
+          "language": "json",
+          "path": "./json.json"
+      }
       ]
     }
   }
+

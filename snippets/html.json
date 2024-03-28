@@ -1,28 +1,38 @@
-
 {
-    "!": {
-      "prefix": "!",
-      "body": [
-            "<!DOCTYPE html>",
-            "<html lang=\"en\">",
-            "\t<head>",
-            "\t\t<meta charset=\"UTF-8\">",
-            "\t\t<meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">",
-            "\t\t<title>Document</title>",
-            "\t\t<link href=\"style.css\" rel=\"stylesheet\">",
-            "\t</head>",
-            "\t<body>",
-            "\t$0",
-            "\t</body>",
-            "</html>"
-      ],
-      "description": "HTML template"
-    },
-    "!!": {
-        "prefix": "!!",
-        "body": ["<!DOCTYPE html>"],
-        "description": "<!DOCTYPE html>"
-      }
-
-    
+  "!": {
+    "prefix": "!",
+    "body": [
+      "<!DOCTYPE html>",
+      "<html lang=\"en\">",
+      "\t<head>",
+      "\t\t<meta charset=\"UTF-8\">",
+      "\t\t<meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">",
+      "\t\t<title>Document</title>",
+      "\t\t<link href=\"style.css\" rel=\"stylesheet\">",
+      "\t</head>",
+      "\t<body>",
+      "\t$0",
+      "\t</body>",
+      "</html>"
+    ],
+    "description": "HTML template"
+  },
+  "!!": {
+    "prefix": "!!",
+    "body": [
+      "<!DOCTYPE html>"
+    ],
+    "description": "<!DOCTYPE html>"
+  },
+  "j": {
+    "prefix": "!e",
+    "body": ["\n", "\n", "console.log(\"dsfsdf\")\n", "fori\"dfasdf\"\n", "    print(\"dsfsdf\")\n", "\n"],
+    "description": "desc"
+  },
+  "jj": {
+    "prefix": "!r",
+    "body":["\n", "import sys\n", "import pprint\n", "import json\n", "\n", "filename = sys.argv[-1]\n", "\n", "\n", "try:\n", "    f = open(filename, 'r')\n", "except :\n", "    print(\"file not exit\")\n", "\n", "\n", "body = []\n", "for line in f:\n", "    content = \"\"\n", "    for letter in line:\n", "        content = content + letter\n", "    body.append(content)\n", "\n", "\n", "print(json.dumps(body))\n", "# pprint.pprint(json.dumps(body))\n", "\n", "\n"],
+    "description": "desc"
+  }
+  
 }
