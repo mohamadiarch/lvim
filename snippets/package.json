@@ -1,32 +1,35 @@
 {
-    "name": "custome-nvim-snippets",
-    "author": "mohamadi_arch",
-    "engines": {
-      "vscode": "^1.11.0"
-    },
-    "contributes": {
-      "snippets": [
-        {
-          "language": "python",
-          "path": "./python.json"
-        },
-        {
-          "language": "python",
-          "path": "./django.json"
-        },
-        {
-          "language": "markdown",
-          "path": "./markdown.json"
-        },
-        {
-          "language": "html",
-          "path": "./html.json"
-        },
-        {
-          "language": "json",
-          "path": "./json.json"
+  "name": "custome-nvim-snippets",
+  "author": "mohamadi_arch",
+  "engines": {
+    "vscode": "^1.11.0"
+  },
+  "contributes": {
+    "snippets": [
+      {
+        "language": "python",
+        "path": "./python.json"
+      },
+      {
+        "language": "python",
+        "path": "./django.json"
+      },
+      {
+        "language": "markdown",
+        "path": "./markdown.json"
+      },
+      {
+        "language": "html",
+        "path": "./html.json"
+      },
+      {
+        "language": "json",
+        "path": "./json.json"
+      },
+      {
+        "language": "htmldjango",
+        "path": "./htmldjango.json"
       }
-      ]
-    }
+    ]
   }
-
+}

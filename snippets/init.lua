@@ -2,7 +2,7 @@
 -- https://www.lunarvim.org/docs/1.2/configuration/custom-snippets
 -- you can create custome snippet in two ways:
 -- 1. json format ===>  friendly-snippets
--- 2. lua format  ===>  LuaSnip
+-- 2. lua format  ===>  LuaSnip   https://github.com/L3MON4D3/LuaSnip/blob/master/DOC.md#lua
 -- ---------------------json format---------------------------
 --  "New function": {
     -- "prefix": "def",

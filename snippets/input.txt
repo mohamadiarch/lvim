@@ -1,27 +1,17 @@
+{#"DIRS": [BASE_DIR / "templates"], #}
 
-import sys
-import pprint
-import json
-
-filename = sys.argv[-1]
-
-
-try:
-    f = open(filename, 'r')
-except :
-    print("file not exit")
-
-
-body = []
-for line in f:
-    content = ""
-    for letter in line:
-        content = content + letter
-    body.append(content)
-
-
-print(json.dumps(body))
-# pprint.pprint(json.dumps(body))
-
-
-# python convertor.py input.txt >> output.txt
+{% load static %}    {# STATICFILES_DIRS = [BASE_DIR / "statics",] #}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="{% static "css/style.css" %}" type="text/css" media="all">
+    <title>
+      {% block title %} default title {% endblock %}
+    </title>
+  </head>
+  <body>
+        {% block content %} {% endblock %}
+  </body>
+</html>

@@ -16,11 +16,14 @@ local pluginpath = "C:\\Users" .. username .. "\\AppData\\Roaming\\lunarvim\\sit
 --   command! RcLunar tabe C:\Users\mohammadi\AppData\Roaming\lunarvim\lvim\init.lua
 --   command! RcWhichKey tabe C:\Users\mohammadi\AppData\Roaming\lunarvim\lvim\lua\lvim\core\which-key.lua
 -- ]])
-local Vimrc = "command! Vimrc tabe C:\\Users" .. username .. "\\AppData\\Local\\lvim\\config.lua"
-vim.api.nvim_exec(Vimrc, true)
+local Vimrc = "command! Vimrc tabe C:\\Users" .. username .. "\\AppData\\Local\\lvim\\lua\\keymaps.lua"
+vim.api.nvim_exec(Vimrc, true) -- for change the config
+
+local RcLunar = "command! VimrcLunar tabe C:\\Users" .. username .. "\\AppData\\Roaming\\lunarvim\\lvim\\init.lua"
+vim.api.nvim_exec(RcLunar, true)
 
 local RcLvim = "command! RcLvim tabe C:\\Users" .. username .. "\\AppData\\Local\\lvim\\config.lua"
-vim.api.nvim_exec(RcLvim, true)
+vim.api.nvim_exec(RcLvim, true) -- for comment all conifg
 
 local RcLunar = "command! RcLunar tabe C:\\Users" .. username .. "\\AppData\\Roaming\\lunarvim\\lvim\\init.lua"
 vim.api.nvim_exec(RcLunar, true)
@@ -67,6 +70,12 @@ vim.api.nvim_exec(DocLua, true)
 
 local EE = "command! EE tabe C:\\Users" .. username .. "\\AppData\\Local\\lvim\\doc\\e.md"
 vim.api.nvim_exec(EE, true)
+
+local Anki = "command! Anki tabe C:\\Users" .. username .. "\\AppData\\Local\\lvim\\doc\\anki.md"
+vim.api.nvim_exec(Anki, true) -- anki just for vim. diff with DocAnki
+
+local Todoist = "command! Todoist tabe C:\\Users" .. username .. "\\AppData\\Local\\lvim\\doc\\todo.md"
+vim.api.nvim_exec(Todoist, true)
 
 local Train = "command! Train tabe C:\\Users" .. username .. "\\AppData\\Local\\lvim\\doc\\train.md"
 vim.api.nvim_exec(Train, true)
@@ -120,7 +129,7 @@ local DocCheatSheatsZip = "command! DocCheatSheatsZip tabe " .. cheatpath .. "\\
 vim.api.nvim_exec(DocCheatSheatsZip, true)
 
 local DocAnki = "command! DocAnki tabe " .. cheatpath .. "\\awesome-cheatsheets\\Anki.md"
-vim.api.nvim_exec(DocAnki, true)
+vim.api.nvim_exec(DocAnki, true) -- anki for cheatsheets like linux. diff with anki
 
 local DocGit = "command! DocGit tabe " .. cheatpath .. "\\awesome-cheatsheets\\tools\\git.sh"
 vim.api.nvim_exec(DocGit, true)

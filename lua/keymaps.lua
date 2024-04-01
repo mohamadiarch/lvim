@@ -18,9 +18,16 @@ local wk= require("which-key")
 -- }
 
 
--- codeium keymaps are inside plugins.lua
--- codeium's default keybindings can be disabled by setting
-vim.g.codeium_disable_bindings = 1
+
+
+
+
+
+
+
+
+vim.g.codeium_disable_bindings = 1 -- codeium's default keybindings can be disabled 
+vim.g.buffergator_suppress_keymaps = 1 -- disable default key-binding in buffergator plugin
 
 
 -- vim.api.nvim_set_keymap('n', '<C-l>', '<cmd>lua toggle_line_end()<CR>', { noremap = true, silent = true })
@@ -87,6 +94,7 @@ vim.keymap.set({'n'}, 'k', 'gk') -- if long lines wraps
 
 
 
+
 --------------------------terminal mode-----------------------
 vim.keymap.set({'t'}, 'jj', '<C-\\><C-N><C-w>') -- jj for normal mode
 vim.keymap.set({'t'}, 'qq', '<C-a>exit') -- qq for exit [delete input then type exit]
@@ -99,8 +107,11 @@ vim.keymap.set({'t'}, 'qq', '<C-a>exit') -- qq for exit [delete input then type 
 
 -- vim.api.nvim_set_keymap("i", "<c-z>", "<cmd>lua require('lsp_signature').toggle_float_win()<CR>", {}) -- enter in normal mode
 
-
-
+vim.keymap.set({'n'}, '<space><up>', '<cmd>sp<cr><C-w>k')
+vim.keymap.set({'n'}, '<space><down>', '<cmd>sp<cr>')   -- <Ctrl>ws
+vim.keymap.set({'n'}, '<space><right>', '<cmd>vs<cr>')  -- <Ctll>wv
+vim.keymap.set({'n'}, '<space><left>', '<cmd>vs<cr><C-w>h')
+-- <Ctll>ww <Ctll>wq <Ctll>wl <Ctll>wx <Ctll>wr <Ctll>w= <crlt>w_ <Ctll>wH <Ctll>wT  
 
 vim.api.nvim_set_keymap("n", "<space>1", "<esc><cmd>:BufferLineGoToBuffer 1<CR>", {}) 
 vim.api.nvim_set_keymap("n", "<space>2", "<esc><cmd>:BufferLineGoToBuffer 2<CR>", {}) 
@@ -111,6 +122,20 @@ vim.api.nvim_set_keymap("n", "<space>6", "<esc><cmd>:BufferLineGoToBuffer 6<CR>"
 vim.api.nvim_set_keymap("n", "<space>7", "<esc><cmd>:BufferLineGoToBuffer 7<CR>", {}) 
 vim.api.nvim_set_keymap("n", "<space>8", "<esc><cmd>:BufferLineGoToBuffer 8<CR>", {}) 
 vim.api.nvim_set_keymap("n", "<space>9", "<esc><cmd>:BufferLineGoToBuffer 9<CR>", {}) 
+
+-- surround in visual mode
+-- vim.api.nvim_set_keymap("v", "<space>s[", "di[<space><space>]<left><left><esc>p", {}) 
+vim.api.nvim_set_keymap("v", "<space>s[", "di[]<left><esc>p", {}) 
+vim.api.nvim_set_keymap("v", "<space>s{", "di{}<left><esc>p", {}) 
+vim.api.nvim_set_keymap("v", "<space>s\"", "di\"\"<left><esc>p", {}) 
+vim.api.nvim_set_keymap("v", "<space>s'", "di''<left><esc>p", {}) 
+vim.api.nvim_set_keymap("v", "<space>s(", "di()<left><esc>p", {}) 
+-- just one word: there is no conflict with registers
+vim.api.nvim_set_keymap("n", "\"\"", "ysiw\"", {})
+vim.api.nvim_set_keymap("n", "\"'", "ysiw'", {}) 
+vim.api.nvim_set_keymap("n", "\"{", "ysiw{", {}) 
+vim.api.nvim_set_keymap("n", "\"[", "ysiw[", {}) 
+vim.api.nvim_set_keymap("n", "\"(", "ysiw(", {})
 
 ---------------------change default lunarvim---------------------------
 local cmp_mapping = require "cmp.config.mapping"
@@ -197,6 +222,11 @@ vim.keymap.set({'n'}, '<space>rG', '', {  --rg for google current word
 
 
 
+
+
+
+
+
 -- vim.keymap.set({'n'}, '<C-z>', '', { 
 --     desc = "run_only_current_file", -- you can install markdown viewr in chrome  
 --     callback = run_only_current_file
@@ -230,10 +260,10 @@ vim.api.nvim_create_user_command("Dict", serach_dictionary, { desc = "Search wor
 
 
 
--- flash.nvim
 wk.register({
   b={
-    name = "Buffers",  
+    name = "Buffers",  -- <C-o> for reopen closed buffer
+    a = { "<cmd>tab ba<cr>", "as tabs" },                  -- better view for telescope buffers [short name]
     g = { "<cmd>BuffergatorToggle<cr>", "buffer gator" },  -- list of buffers as a navbar
     p = { "<cmd>BufferLineTogglePin<cr>", "Pin"},  -- pin buffer
     -- w = { "<cmd>BufferWipeout<cr>", "Wipeout" }, -- TODO: implement this for bufferline
@@ -258,16 +288,52 @@ wk.register({
   k={
     name="vscode",
     -- <leader>sk  list of shortkeys
-    k=  { "<cmd>lua vim.lsp.buf.hover()<cr>", "Show hover" },
-    l= {"<cmd>lua require('lsp_signature').toggle_float_win()<CR>","lsp signature"},
+    K =  { "<cmd>lua vim.lsp.buf.hover()<cr>", "Show hover" }, --defualt [K] you can use this twice
+    l = {"<cmd>lua require('lsp_signature').toggle_float_win()<CR>","lsp signature"},
     v = { "<cmd>:MarkdownPreviewToggle<CR>", "markdown viewer live" },
     g = { "<cmd>:Glow<CR>", "markdown viewer inside vim" },
     c = { "<cmd>:PickColor<CR>", "Color picker" },
-    ci = { "<cmd>:PickColorInsert<CR>", "Color picker insert" },
-    -- flash in a plugin for motion and jumping
+    p = { "<cmd>:PickColorInsert<CR>", "Color picker insert" },
+  },
+  j={
+    name="jump",
+    -- va{ and va{V very powerful selection ==> visual mode: aB , aBV
+    -- easy motion flash.nvim: f+F [jump next] t+T [jump before] ;+, [repeat] another jumps are { % } 
+    p={"%", "%"},
     j={function() require('flash').jump() end, "flash jump"},
-    t={function() require('flash').treesitter() end, "flash treesitter"},
-    r={function() require('flash').treesitter_search() end, "flash treesitter search"},
+    k={function() require('flash').treesitter() end, "flash treesitter"},
+    t={function() require('flash').treesitter_search() end, "flash treesitter search"},
+    -- nvim-surround: ys{motion}{char}, ds{char}, cs{target}{replacement}
+    -- Old text                    Command         New text
+    -- -------------ssss----------) } ] > " ==alias==> b B r a q------------------------
+    --     surr*ound_words             ysiw) or ysiw(          (surround_words with space and nospace)
+    --     *make strings               ys$"            "make strings"
+    --     [delete ar*ound me!]        ds]             delete around me!
+    --     remove <b>HTML t*ags</b>    dst             remove HTML tags
+    --     'change quot*es'            cs'"            "change quotes"
+    --     <b>or tag* types</b>        csth1<CR>       <h1>or tag types</h1>
+    --     delete(functi*on calls)     dsf             function calls
+    --------------------------f:function t:tag T:tag with attr
+
+    -- insert = "<C-g>s",
+    -- insert_line = "<C-g>S",
+    -- normal = "ys",
+    -- normal_cur = "yss",
+    -- normal_line = "yS",
+    -- normal_cur_line = "ySS",
+    -- visual = "S",
+    -- visual_line = "gS",
+    -- delete = "ds",
+    -- change = "cs",
+    -- change_line = "cS",
+    --------------------------------
+    -- text objs: iw aw ip ap
+    -- yssf ==> function
+    -- ysas
+    -- ySiw{ 
+    -- ySS
+    -- visual, line visual, block visual ==> S or gS [set virtauledit=block => for select empty lines]
+    -- <C-g>s in inset mode
   },
   m={
     name="me",

@@ -1,0 +1,25 @@
+{
+  "baseHtml": {
+    "prefix": "baseHtml",
+    "body": [
+      "{#\"DIRS\": [BASE_DIR / \"templates\"], #}",
+      "",
+      "{% load static %}    {# STATICFILES_DIRS = [BASE_DIR / \"statics\",] #}",
+      "<!DOCTYPE html>",
+      "<html lang=\"en\">",
+      "  <head>",
+      "    <meta charset=\"UTF-8\">",
+      "    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">",
+      "    <link rel=\"stylesheet\" href=\"{% static \"css/style.css\" %}\" type=\"text/css\" media=\"all\">",
+      "    <title>",
+      "      {% block title %} default title {% endblock %}",
+      "    </title>",
+      "  </head>",
+      "  <body>",
+      "        {% block content %} {% endblock %}",
+      "  </body>",
+      "</html>"
+    ],
+    "description": "base html with static files"
+  }
+}
