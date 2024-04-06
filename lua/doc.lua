@@ -1,11 +1,25 @@
 -- User Commands should be Uppercase
 -- windows path
-local username = "\\moham"
+local username = "\\moham" -- change for serach_dictionary function
 local cheatpath = "H:\\offline_prog\\cheat"
 local offline_prog = "H:\\offline_prog"
 local pluginpath = "C:\\Users" .. username .. "\\AppData\\Roaming\\lunarvim\\site\\pack\\lazy\\opt"
 
+-----------------------------reading docs-------------------------
+-- f1
+-- :help
+-- :help user-manual
+-- : h topic
+-- : h pluginname
+-- :only :setl bufflisted
+-- ' is used for options (:help 'incsearch')
+-- No prefix for normal mode commands (:help CTRL-])
+-- i_ or v_ for insert mode and visual mode (:help i_CTRL-[)
 
+--------------------------------------------------------------------
+
+local PluginDocs = "command! PluginDocs tabe " .. pluginpath .. "\\alpha-nvim\\Readme.md"
+vim.api.nvim_exec(PluginDocs, true)
 
 
 -- config files---------------------Rc--------------------------------------------------------------
@@ -45,7 +59,7 @@ vim.api.nvim_exec(RcWhichKey, true)
 --   command! DocLua tabe C:\Users\mohammadi\AppData\Local\lvim\doc\lua.md
 -- ]])
 
-local DocLvim = "command! DocLvim tabe C:\\Users" .. username .. "\\AppData\\Local\\lvim\\doc\\lvim.md"
+local DocLvim = "command! Docvim tabe C:\\Users" .. username .. "\\AppData\\Local\\lvim\\doc\\vim.md"
 vim.api.nvim_exec(DocLvim, true)
 
 local DocInstall = "command! DocInstall tabe C:\\Users" .. username .. "\\AppData\\Local\\lvim\\doc\\install.md"

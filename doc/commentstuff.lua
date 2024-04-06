@@ -1,0 +1,45 @@
+-- function find_fifth_e()
+--     local cursor_pos = vim.fn.getcurpos()
+--     local line = cursor_pos[2]
+--     local col = cursor_pos[3]
+--     local line_text = vim.fn.getline(line)
+--     local line_length = #line_text       -- line length cols
+  
+--     local count = 0
+--     local word_started = false
+--     local word_end_col = 0
+  
+--     -- Iterate through each character in the line, starting from the current column
+--     for i = col, #line_text do
+--         local char = line_text:sub(i, i)
+--         if char:match("%s") then
+--             -- If a space is encountered and a word has started, increase the count
+--             if word_started then
+--                 count = count + 1
+--                 if count == 3 then
+--                     -- Found the fifth word, store the end column of this word
+--                     word_end_col = i - 1
+--                     break
+--                 end
+--                 word_started = false
+--             end
+--         else
+--             -- If a non-space character is encountered, mark the start of a word
+--             if not word_started then
+--                 word_started = true
+--             end
+--         end
+--     end
+  
+--     -- If the fifth word was found, print the column of its last character
+--     if count >= 3 then
+--         local last_char_col = word_end_col + 1 -- Increment to get the column of the last character
+--         -- print("Column of last character of the fifth word from current cursor position:", last_char_col)
+--         vim.api.nvim_feedkeys("3e","n", false)
+--     else
+--         -- print("There are less than 5 words from the current cursor position.")
+--         vim.api.nvim_feedkeys("g_","n", false)
+--     end
+--   end
+--   -- Bind this function to a keymap
+--   vim.api.nvim_set_keymap('n', 'L', ':lua find_fifth_e()<CR>', { noremap = true, silent = true })

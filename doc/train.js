@@ -5,14 +5,12 @@
 
 
 function ali(a,b,c){
-  
+  "dfsjalsdjf"
+  "dsfljsdfjsld"
+    console.log("[dsfsd]")
+  jldsjfla
 }
 
 
-a=ali(1,2,3)
-// create an array
 
-
-
-
-consle.log(a)
+foo(42, bar(5), 'hello');

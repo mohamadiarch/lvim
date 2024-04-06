@@ -17,3 +17,17 @@ omitted.
 function
 function
 https://github.com/CRAG666/code_runner.nvim
+
+django-admin
+urlpatterns
+path("<str:argicle>",
+path("<str:argicle>",
+HttpResponseRedirect(reverse(articles))
+HttpResponseRedirect("/article")
+rel="stylesheet"
+function
+HttpResponseRedirect(reverse(articles))
+django-admin
+urlpatterns
+render
+Django

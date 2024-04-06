@@ -52,7 +52,9 @@ vim.api.nvim_set_keymap("n", "qq", ":qa!", {}) -- press enter to exit
 vim.api.nvim_set_keymap("n", "qw", ":wqa!", {}) -- press enter to save and exit (wq has conflict by word navigation)
 vim.api.nvim_set_keymap("i", "jj", "<ESC>", {}) -- press jj for nodrmal mode [a-o-i== insert mode]
 vim.api.nvim_set_keymap("i", "jk", "<CR>", {}) -- press jk for pressing enter in insermode
-vim.api.nvim_set_keymap("i", "OO", "<C-o>o", {}) -- go to next line with oo in the middle of string
+vim.api.nvim_set_keymap("i", "Oo", "<esc>o", {}) -- go to next line with oo in the middle of string
+vim.api.nvim_set_keymap("i", "oO", "<esc>O", {})  -- go to pre line with oo in the middle of string
+vim.api.nvim_set_keymap("i", "OO", "<CR>", {}) 
 -- vim.api.nvim_set_keymap("n", "0", "^i", {})   -- insert start of line (A for end)
 -- vim.api.nvim_set_keymap("n", "ii", "<cmd>:startinsert<cr>", {}) -- ii for insert mode
 -- vim.api.nvim_set_keymap("n", "i", "<CR>", {}) -- enter in normal mode
@@ -65,33 +67,28 @@ vim.api.nvim_set_keymap("n", "<M-5>", "<esc><cmd>:w<CR><cmd>:TermCurrentV<CR>", 
 
 
 
-
+vim.keymap.set({'n'}, 'gk', 'K')                 -- use this command for docs
 lvim.lsp.buffer_mappings.normal_mode["K"] = nil    -- <leader>kk
 vim.keymap.set({'n', 'x', 'o'}, 'zh', 'H') -- H default key for top of screen
-vim.keymap.set({'n', 'x', 'o'}, 'zl', 'L') -- L default key for bottom of screen
+vim.keymap.set({'n', 'x', 'o'}, 'zl', 'L') -- L default key for bottom of screen [5 line you set]
 vim.keymap.set({'n', 'x', 'o'}, 'zm', 'M') -- M default key for Middle of screen
-
-vim.keymap.set({'n', 'x', 'o'}, 'zy', '<C-y>') -- scroll one line above
-vim.keymap.set({'n', 'x', 'o'}, 'ze', '<C-e>') -- scroll one line bottom 
-
-vim.keymap.set({'n', 'x', 'o'}, '<C-f>', '<C-d>') -- use <C-f> <C-u> for semi page navigation
--- vim.keymap.set({'n', 'x', 'o'}, 'zi', '<C-b>')  -- move a 1 page screen up 
--- vim.keymap.set({'n', 'x', 'o'}, 'zu', '<C-u>')  -- move a 0.5 page screen up 
--- vim.keymap.set({'n', 'x', 'o'}, 'zf', '<C-f>')  ---- move a 1 page screen down
--- vim.keymap.set({'n', 'x', 'o'}, 'zd', '<C-d>')  ---- move a 0.5 page screen down 
+vim.keymap.set({'n', 'x', 'o'}, 'zy', '<C-y>') -- move screen  above
+vim.keymap.set({'n', 'x', 'o'}, 'ze', '<C-e>') -- move screen  bottom 
 -- in my case: [zz + zt + zb ] + [ zh + zl + zm ] + [zy + ze] 
-
-vim.keymap.set({'n', 'x', 'o'}, 'H', '4b')  -- 0w == ^
-vim.keymap.set({'n', 'x', 'o'}, 'L', '4e') --$
+-- folds = [zf + za + zd + zo + zc + zr + zm + zi]
+vim.keymap.set({'n'}, '1z', '<C-d>') -- move cursor semi page
+vim.keymap.set({'n'}, '2z', '<C-u>') 
+vim.keymap.set({'n'}, '3z', '<C-f>') -- move cursor one page
+vim.keymap.set({'n'}, '4z', '<C-b>') 
+----
+vim.keymap.set({'n', 'x', 'o'}, 'H', '3b')  -- 0 , ^
+vim.keymap.set({'n', 'x', 'o'}, 'L', '3e') --$ , g_
 vim.keymap.set({'n', 'x', 'o'}, 'K', '6k')    
 vim.keymap.set({'n', 'x', 'o'}, 'J', '6j')
-vim.keymap.set({'n'}, '<C-d>', 'diw') --delete whole word even you were in the middle
-vim.keymap.set({'n'}, '<C-e>', '3e')
-vim.keymap.set({'n'}, '<C-b>', '3b')
+vim.keymap.set({'n'}, '<C-d>', 'diw') --delete whole word even you were in the middle [<C-w> insert mode]
 vim.keymap.set({'n'}, 'gG', 'gg^vG$')  -- select all lines [gg - G - gG]
-vim.keymap.set({'n'}, 'j', 'gj') -- if long lines wraps
-vim.keymap.set({'n'}, 'k', 'gk') -- if long lines wraps
-
+vim.keymap.set({'n'}, 'j', 'gj') -- if long lines wraps in two lines
+vim.keymap.set({'n'}, 'k', 'gk') -- if long lines wraps in two lines
 
 
 
@@ -99,8 +96,8 @@ vim.keymap.set({'n'}, 'k', 'gk') -- if long lines wraps
 vim.keymap.set({'t'}, 'jj', '<C-\\><C-N><C-w>') -- jj for normal mode
 vim.keymap.set({'t'}, 'qq', '<C-a>exit') -- qq for exit [delete input then type exit]
 
-
-
+--------------------------insert mode-----------------------
+-- <C-w> <C-t> <C-d>
 
 
 
@@ -122,20 +119,16 @@ vim.api.nvim_set_keymap("n", "<space>6", "<esc><cmd>:BufferLineGoToBuffer 6<CR>"
 vim.api.nvim_set_keymap("n", "<space>7", "<esc><cmd>:BufferLineGoToBuffer 7<CR>", {}) 
 vim.api.nvim_set_keymap("n", "<space>8", "<esc><cmd>:BufferLineGoToBuffer 8<CR>", {}) 
 vim.api.nvim_set_keymap("n", "<space>9", "<esc><cmd>:BufferLineGoToBuffer 9<CR>", {}) 
+vim.api.nvim_set_keymap("n", "<space>$", "<esc><cmd>:BufferLineGoToBuffer -1<CR>", {}) 
 
--- surround in visual mode
--- vim.api.nvim_set_keymap("v", "<space>s[", "di[<space><space>]<left><left><esc>p", {}) 
-vim.api.nvim_set_keymap("v", "<space>s[", "di[]<left><esc>p", {}) 
-vim.api.nvim_set_keymap("v", "<space>s{", "di{}<left><esc>p", {}) 
-vim.api.nvim_set_keymap("v", "<space>s\"", "di\"\"<left><esc>p", {}) 
-vim.api.nvim_set_keymap("v", "<space>s'", "di''<left><esc>p", {}) 
-vim.api.nvim_set_keymap("v", "<space>s(", "di()<left><esc>p", {}) 
--- just one word: there is no conflict with registers
+
+-- surround just one word: there is no conflict with registers
 vim.api.nvim_set_keymap("n", "\"\"", "ysiw\"", {})
 vim.api.nvim_set_keymap("n", "\"'", "ysiw'", {}) 
 vim.api.nvim_set_keymap("n", "\"{", "ysiw{", {}) 
 vim.api.nvim_set_keymap("n", "\"[", "ysiw[", {}) 
 vim.api.nvim_set_keymap("n", "\"(", "ysiw(", {})
+
 
 ---------------------change default lunarvim---------------------------
 local cmp_mapping = require "cmp.config.mapping"
@@ -161,6 +154,7 @@ lvim.builtin.telescope.defaults.mappings = {
   }
 }
 -- lvim.builtin.telescope.theme="ivy" --ivy or dropdown
+
 
 
 
@@ -225,14 +219,6 @@ vim.keymap.set({'n'}, '<space>rG', '', {  --rg for google current word
 
 
 
-
-
--- vim.keymap.set({'n'}, '<C-z>', '', { 
---     desc = "run_only_current_file", -- you can install markdown viewr in chrome  
---     callback = run_only_current_file
--- })
-
-
 local serach_dictionary = function(a)
   -- vim.api.nvim_command(":echo 'Hello from Lua!'")
   -- local currentLine = vim.fn.getline(".")
@@ -245,10 +231,11 @@ local serach_dictionary = function(a)
   elseif a.args=="oxford" then
     currnetPath ="https://www.oxfordlearnersdictionaries.com/definition/english/" .. wordUnderCursor
   elseif a.args=="google" then
-    currnetPath ="https://www.google.com/search?q=" .. wordUnderCursor .. " meaning"
+    currnetPath ="https://www.google.com/search?q=" .. wordUnderCursor
   end
   vim.api.nvim_feedkeys(":!chrome "..currnetPath.."\n","n", false) -- add chrome.exe to your path
-  local Efile= "C:\\Users\\mohammadi\\AppData\\Local\\lvim\\doc\\e_under_cursor.md"
+  local username = "\\moham"
+  local Efile = "C:\\Users" .. username .. "\\AppData\\Local\\lvim\\doc\\e_under_cursor.md"
   local fileHandle = io.open(Efile, "a") -- append mode
   fileHandle:write("\n" .. wordUnderCursor)
   fileHandle:close()
@@ -261,24 +248,6 @@ vim.api.nvim_create_user_command("Dict", serach_dictionary, { desc = "Search wor
 
 
 wk.register({
-  b={
-    name = "Buffers",  -- <C-o> for reopen closed buffer
-    a = { "<cmd>tab ba<cr>", "as tabs" },                  -- better view for telescope buffers [short name]
-    g = { "<cmd>BuffergatorToggle<cr>", "buffer gator" },  -- list of buffers as a navbar
-    p = { "<cmd>BufferLineTogglePin<cr>", "Pin"},  -- pin buffer
-    -- w = { "<cmd>BufferWipeout<cr>", "Wipeout" }, -- TODO: implement this for bufferline
-    h = { "<cmd>BufferLineMovePrev<cr>", "move to prev" },
-    l = { "<cmd>BufferLineMoveNext<cr>", "move to next" },
-    H = { "<cmd>BufferLineCloseLeft<cr>", "Close all to the left" },
-    L = {
-      "<cmd>BufferLineCloseRight<cr>",
-      "Close all to the right",
-    },
-    S = {
-      "<cmd>BufferLineSortByExtension<cr>",
-      "Sort by language",
-    },
-  },
   p={
     -- there is lots of mapping with p in lunarvimg config
     name = "plugins",
@@ -299,7 +268,9 @@ wk.register({
     name="jump",
     -- va{ and va{V very powerful selection ==> visual mode: aB , aBV
     -- easy motion flash.nvim: f+F [jump next] t+T [jump before] ;+, [repeat] another jumps are { % } 
-    p={"%", "%"},
+    p={"%", "%"}, --pranteses
+    h = { "^", "^" }, --0
+    l = { "g_", "g_" }, --$
     j={function() require('flash').jump() end, "flash jump"},
     k={function() require('flash').treesitter() end, "flash treesitter"},
     t={function() require('flash').treesitter_search() end, "flash treesitter search"},
@@ -327,13 +298,14 @@ wk.register({
     -- change = "cs",
     -- change_line = "cS",
     --------------------------------
-    -- text objs: iw aw ip ap
+    -- text-objs: [iw aw iW aW word] [is as sentense] [ip ap parag] [i" a" quote] [it at i> a> tags] [i{ a{ iB aB] [ a( ab ]  [operations: d,c,v]
     -- yssf ==> function
     -- ysas
     -- ySiw{ 
     -- ySS
     -- visual, line visual, block visual ==> S or gS [set virtauledit=block => for select empty lines]
     -- <C-g>s in inset mode
+    -- [1.ma 2.'a 3.:marks] [a is local, A is global mark] [:marks :marks abc :delmarks a-c :delm!]
   },
   m={
     name="me",
@@ -358,7 +330,7 @@ wk.register({
     --dictionary
     l = { "<cmd>:Dict longman<CR>", "run longman" },
     o = { "<cmd>:Dict oxford<CR>", "run oxford" },
-    k = { "<cmd>:Dict cambridge<CR>", "run cambridge" },
+    -- k = { "<cmd>:Dict cambridge<CR>", "run cambridge" },
     g = { "<cmd>:Dict google<CR>", "run google" }, --rG for google current file
     --g poen google for current file like html 
   }
@@ -392,6 +364,26 @@ lvim.builtin.which_key.mappings["h"] = {
   }
 }
 
+
+lvim.builtin.which_key.mappings["b"] = {
+    name = "Buffers",  -- <C-o> for reopen closed buffer
+    a = { "<cmd>tab ba<cr>", "as tabs" },                  -- better view for telescope buffers [short name]
+    g = { "<cmd>BuffergatorToggle<cr>", "buffer gator" },  -- list of buffers as a navbar
+    p = { "<cmd>BufferLineTogglePin<cr>", "Pin"},  -- pin buffer
+    f = { "<cmd>Telescope buffers previewer=false<cr>", "Find" },
+    j = {"<cmd>BufferLinePick<cr>", "Jump"},
+    b = { "<cmd>BufferLineCyclePrev<cr>", "Previous" },
+    n = { "<cmd>BufferLineCycleNext<cr>", "Next" },
+    h = { "<cmd>BufferLineMovePrev<cr>", "move to prev" },
+    l = { "<cmd>BufferLineMoveNext<cr>", "move to next" },
+    H = { "<cmd>BufferLineCloseLeft<cr>", "Close all to the left" },
+    L = {"<cmd>BufferLineCloseRight<cr>","Close all to the right"},
+    S = {"<cmd>BufferLineSortByExtension<cr>","Sort by extention"},
+    D = {"<cmd>BufferLineSortByDirectory<cr>","Sort by directory"},
+    w = { "<cmd>noautocmd w<cr>", "Save without formatting (noautocmd)" },
+    g = {"<cmd>BufferLinePickClose<cr>","Pick which buffer to close",},
+}
+
 lvim.builtin.which_key.mappings[";"] = {
   name="find",
   [";"]={
@@ -399,11 +391,13 @@ lvim.builtin.which_key.mappings[";"] = {
   }
 }
 lvim.builtin.which_key.mappings["s"] = {
+  -- ':Telescope find_files<cr>' . "'" . expand('<cword>')
   name = "Search",
+  ["/"] = {"/<C-r><C-w><CR>:set hls<CR>", "search under cursor" }, -- [:<C-r><C-w>] [*#]
   s = { "<cmd>Telescope current_buffer_fuzzy_find<cr>", "Seacrh currnet file" },
-  S = { "<cmd>Telescope luasnip theme=ivy<cr>", "snippet list"},
   a = { "<cmd>Telescope live_grep theme=ivy<cr>", "Live Grep inside all project"},
   f = { "<cmd>Telescope find_files<cr>", "Find File" },
+  t = { "<cmd>Telescope luasnip theme=ivy<cr>", "snippet list"},
   --------spector-----------
   p = { '<cmd>lua require("spectre").toggle()<CR>', "Toggle Spectre"},
   w = { '<cmd>lua require("spectre").open_visual({select_word=true})<CR>', "Spectre curent word"},

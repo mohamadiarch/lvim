@@ -1,4 +1,23 @@
 
+# VIM
+
+## command line
+
+```bash
+:<C-i>            # see all commands posibilities [telescope commands]
+:<C-r><C-w>        # paste the word under cursor in command line
+/<C-r><C-w>         # search for the word under cursor [*#]
+```
+
+
+
+---------------------------------------------------------------------------
+---------------------------------------------------------------------------
+---------------------------------------------------------------------------
+
+# LVIM
+
+
 ## commands
 ```bash
 :Alpah        # open startup page ==> Leader + ;

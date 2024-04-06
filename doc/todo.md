@@ -17,7 +17,7 @@ daq + lazyvim
 pechorin/any-jump.vim
 create a command for doc in new tab
 clipboard manager vim
-
+nvim-treesitter/nvim-treesitter-textobjects
 create two folder across
 maxi mize the terminal with a key
  auto import in vim
