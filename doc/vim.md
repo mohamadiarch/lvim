@@ -4,10 +4,18 @@
 ## command line
 
 ```bash
+:help popupmenu-keys
 :<C-i>            # see all commands posibilities [telescope commands]
 :<C-r><C-w>        # paste the word under cursor in command line
 /<C-r><C-w>         # search for the word under cursor [*#]
+<C-w>               # delete word in command line
+<C-e>               # cancel the popup option
+<C-[>                # quit and delete whole command line 
+<C-f>         # open temp for edit previos commadnd
+set wop-=pum      # set horizontal popup
 ```
+
+
 
 
 

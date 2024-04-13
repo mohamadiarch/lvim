@@ -17,7 +17,7 @@ function open_explorer()
         print("else")
     end 
 end
-vim.api.nvim_create_user_command("Open", open_explorer, { desc = "open . or start. for opening file explorer linux/windows" ,nargs = "*" })
+vim.api.nvim_create_user_command("ExploreOpen", open_explorer, { desc = "open . or start. for opening file explorer linux/windows" ,nargs = "*" })
 
 
 --Codiuem Disable and Enable

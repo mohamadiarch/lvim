@@ -9,8 +9,11 @@ open files and buffers
 reopen file
 -----------------
 auto close html tags
-
-vimux
+colorize color names in fiels
+vimux ===> multiple terminal
+lsp clear
+https://github.com/nvim-tree/nvim-tree.lua/issues/2031
+file manager multiple delete + copy and cut
 doc telescope lunarvim
 read doc inside vim
 daq + lazyvim
@@ -21,7 +24,8 @@ nvim-treesitter/nvim-treesitter-textobjects
 create two folder across
 maxi mize the terminal with a key
  auto import in vim
-
+tLintaoAmons/easy-commands.nvim
+omasky/bookmarks.nvim  => anotation when I bookmark
  -----------questions stack
  % for qoutation
  maximaize terminal

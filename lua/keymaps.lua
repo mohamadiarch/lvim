@@ -20,7 +20,9 @@ local wk= require("which-key")
 
 
 
-
+-- lvim.builtin.nvimtree.active = false
+-- lvim.builtin.lir.active = false
+-- lvim.builtin.project.active = false
 
 
 
@@ -55,6 +57,12 @@ vim.api.nvim_set_keymap("i", "jk", "<CR>", {}) -- press jk for pressing enter in
 vim.api.nvim_set_keymap("i", "Oo", "<esc>o", {}) -- go to next line with oo in the middle of string
 vim.api.nvim_set_keymap("i", "oO", "<esc>O", {})  -- go to pre line with oo in the middle of string
 vim.api.nvim_set_keymap("i", "OO", "<CR>", {}) 
+vim.api.nvim_set_keymap("i", "jJ", "<down>", {}) 
+vim.api.nvim_set_keymap("i", "kK", "<up>", {}) 
+vim.api.nvim_set_keymap("i", "lL", "<left>", {}) 
+vim.api.nvim_set_keymap("i", "hH", "<right>", {}) 
+-- vim.api.nvim_set_keymap("n", "<CR>", "<?????>", {}) 
+
 -- vim.api.nvim_set_keymap("n", "0", "^i", {})   -- insert start of line (A for end)
 -- vim.api.nvim_set_keymap("n", "ii", "<cmd>:startinsert<cr>", {}) -- ii for insert mode
 -- vim.api.nvim_set_keymap("n", "i", "<CR>", {}) -- enter in normal mode
@@ -90,6 +98,8 @@ vim.keymap.set({'n'}, 'gG', 'gg^vG$')  -- select all lines [gg - G - gG]
 vim.keymap.set({'n'}, 'j', 'gj') -- if long lines wraps in two lines
 vim.keymap.set({'n'}, 'k', 'gk') -- if long lines wraps in two lines
 
+vim.keymap.set({'n'}, '<Leader>o', 'o<Esc>') -- insert line in normal mode
+vim.keymap.set({'n'}, '<Leader>O', 'O<Esc>') 
 
 
 --------------------------terminal mode-----------------------
@@ -128,6 +138,11 @@ vim.api.nvim_set_keymap("n", "\"'", "ysiw'", {})
 vim.api.nvim_set_keymap("n", "\"{", "ysiw{", {}) 
 vim.api.nvim_set_keymap("n", "\"[", "ysiw[", {}) 
 vim.api.nvim_set_keymap("n", "\"(", "ysiw(", {})
+-- :help 'wildmenu' <C-d> <C-f> <C-w> <C-e> and [<C-j> <C-k> <C-l> <C-h>]
+vim.api.nvim_set_keymap("c", "<C-l>", "<down>", {})   -- accept current item and not run
+vim.api.nvim_set_keymap("c", "<C-h>", "<up>", {})  -- ignore popup
+
+-- Function to move inside the focused folder
 
 
 ---------------------change default lunarvim---------------------------
@@ -252,6 +267,7 @@ wk.register({
     -- there is lots of mapping with p in lunarvimg config
     name = "plugins",
     a = { "<cmd>Telescope<cr>", "Telescope" },  -- command pallet == pa
+    o = { "o<esc>p", "past in new line" }, 
   },
   -- k means up so you should wait for popup after pressing <leader>
   k={
@@ -382,6 +398,8 @@ lvim.builtin.which_key.mappings["b"] = {
     D = {"<cmd>BufferLineSortByDirectory<cr>","Sort by directory"},
     w = { "<cmd>noautocmd w<cr>", "Save without formatting (noautocmd)" },
     g = {"<cmd>BufferLinePickClose<cr>","Pick which buffer to close",},
+    e = {"<cmd>cd %:h<CR>","cd"},
+    E = {"<cmd>set autochdir!<CR>","autochdir"} --toggle
 }
 
 lvim.builtin.which_key.mappings[";"] = {
@@ -397,7 +415,7 @@ lvim.builtin.which_key.mappings["s"] = {
   s = { "<cmd>Telescope current_buffer_fuzzy_find<cr>", "Seacrh currnet file" },
   a = { "<cmd>Telescope live_grep theme=ivy<cr>", "Live Grep inside all project"},
   f = { "<cmd>Telescope find_files<cr>", "Find File" },
-  t = { "<cmd>Telescope luasnip theme=ivy<cr>", "snippet list"},
+  n = { "<cmd>Telescope luasnip theme=ivy<cr>", "snippet list"},  -- ?? both or not
   --------spector-----------
   p = { '<cmd>lua require("spectre").toggle()<CR>', "Toggle Spectre"},
   w = { '<cmd>lua require("spectre").open_visual({select_word=true})<CR>', "Spectre curent word"},
