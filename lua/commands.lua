@@ -29,6 +29,7 @@ vim.cmd([[
 vim.cmd([[command! TermToggleH lua require('toggleterm.terminal').Terminal:new({ direction = 'horizontal'}):toggle()]])
 vim.cmd([[command! TermToggleV lua require('toggleterm.terminal').Terminal:new({ direction = 'vertical'}):toggle()]])
 --
+-- local lazygit = Terminal:new({ cmd = 'lazygit', hidden = true }) specify type of terminal
 
 vim.cmd([[command! TermCurrentH let s:term_dir=expand('%:p:h') | below new | call termopen([&shell], {'cwd': s:term_dir })|: startinsert ]])
 vim.cmd([[command! TermCurrentV let s:term_dir=expand('%:p:h') | vertical new | call termopen([&shell], {'cwd': s:term_dir })|: startinsert]])

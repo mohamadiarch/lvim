@@ -70,6 +70,9 @@ vim.api.nvim_exec(RcWhichKey, true)
 local DocLvim = "command! Docvim e C:\\Users" .. username .. "\\AppData\\Local\\lvim\\doc\\vim.md"
 vim.api.nvim_exec(DocLvim, true)
 
+local DocChrome = "command! DocChrome e C:\\Users" .. username .. "\\AppData\\Local\\lvim\\doc\\chrome.md"
+vim.api.nvim_exec(DocChrome, true)
+
 local DocInstall = "command! DocInstall e C:\\Users" .. username .. "\\AppData\\Local\\lvim\\doc\\install.md"
 vim.api.nvim_exec(DocInstall, true)
 

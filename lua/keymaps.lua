@@ -1,6 +1,7 @@
 -- ctrl-z is for tesing so we should not assing <c-z> to something
 local wk= require("which-key")
-
+require('goto-preview').setup {}
+require('nvim-ts-autotag').setup()
 -- local actions = require('telescope.actions')
 -- require('telescope').setup{
 --   defaults = {
@@ -61,7 +62,11 @@ vim.api.nvim_set_keymap("i", "jJ", "<down>", {})
 vim.api.nvim_set_keymap("i", "kK", "<up>", {}) 
 vim.api.nvim_set_keymap("i", "lL", "<left>", {}) 
 vim.api.nvim_set_keymap("i", "hH", "<right>", {}) 
--- vim.api.nvim_set_keymap("n", "<CR>", "<?????>", {}) 
+vim.api.nvim_set_keymap("i", "pP", "<esc>pi", {}) -- past in insert mode [ctrl+shift+v]
+
+
+vim.api.nvim_set_keymap("n", "<CR>", ":a<CR><CR>.<CR>", {})  -- new line in normal mode [leader o is future]
+-- vim.api.nvim_set_keymap("n", "<CR>", "O<Esc>", {}) 
 
 -- vim.api.nvim_set_keymap("n", "0", "^i", {})   -- insert start of line (A for end)
 -- vim.api.nvim_set_keymap("n", "ii", "<cmd>:startinsert<cr>", {}) -- ii for insert mode
@@ -70,8 +75,17 @@ vim.api.nvim_set_keymap("i", "hH", "<right>", {})
 vim.api.nvim_set_keymap("n", "<M-0>", "<esc><cmd>:w<CR><M-1>i<UP>", {}) -- run code with args
 vim.api.nvim_set_keymap("n", "<M-4>", "<esc><cmd>:w<CR><cmd>:TermCurrentH<CR>", {}) 
 vim.api.nvim_set_keymap("n", "<M-5>", "<esc><cmd>:w<CR><cmd>:TermCurrentV<CR>", {}) 
+vim.api.nvim_set_keymap("n", "<M-q>", "<cmd>:ToggleTerm<CR>", {})   -- close or re-open all terminal splits
 ----------------- <F1> <F12>
 -- vim.api.nvim_set_keymap("n", "<F5>", "<cmd>!python % <CR>", {}) -- run programs
+
+
+vim.api.nvim_set_keymap("n", "gpd", "<cmd>lua require('goto-preview').goto_preview_definition()<CR>", {desc = "definition"})
+vim.api.nvim_set_keymap("n", "gpt", "<cmd>lua require('goto-preview').goto_preview_type_definition()<CR>", {desc = "type def"})
+vim.api.nvim_set_keymap("n", "gpi", "<cmd>lua require('goto-preview').goto_preview_implementation()<CR>", {desc = "implementation"})
+vim.api.nvim_set_keymap("n", "gpD", "<cmd>lua require('goto-preview').goto_preview_declaration()<CR>", {desc = "declaration"})
+vim.api.nvim_set_keymap("n", "gP", "<cmd>lua require('goto-preview').close_all_win()<CR>", {desc = "all_win"})
+vim.api.nvim_set_keymap("n", "gpr", "<cmd>lua require('goto-preview').goto_preview_references()<CR>", {desc = "ref"})
 
 
 
@@ -95,6 +109,7 @@ vim.keymap.set({'n', 'x', 'o'}, 'K', '6k')
 vim.keymap.set({'n', 'x', 'o'}, 'J', '6j')
 vim.keymap.set({'n'}, '<C-d>', 'diw') --delete whole word even you were in the middle [<C-w> insert mode]
 vim.keymap.set({'n'}, 'gG', 'gg^vG$')  -- select all lines [gg - G - gG]
+vim.keymap.set({'n'}, 'dD', ':%d<Cr>')  -- delete all lines [dgg - dG]
 vim.keymap.set({'n'}, 'j', 'gj') -- if long lines wraps in two lines
 vim.keymap.set({'n'}, 'k', 'gk') -- if long lines wraps in two lines
 
@@ -103,9 +118,10 @@ vim.keymap.set({'n'}, '<Leader>O', 'O<Esc>')
 
 
 --------------------------terminal mode-----------------------
-vim.keymap.set({'t'}, 'jj', '<C-\\><C-N><C-w>') -- jj for normal mode
+vim.keymap.set({'t'}, 'jj', '<C-\\><C-n>') -- jj for normal mode
 vim.keymap.set({'t'}, 'qq', '<C-a>exit') -- qq for exit [delete input then type exit]
-
+vim.keymap.set({'t'}, '<space><down>', '<cmd>TermToggleV<cr>')  -- split terminal see commands.lua
+vim.keymap.set({'t'}, '<space><right>', '<cmd>TermToggleH<cr>')  -- split terminal  see commands.lua
 --------------------------insert mode-----------------------
 -- <C-w> <C-t> <C-d>
 
@@ -267,7 +283,6 @@ wk.register({
     -- there is lots of mapping with p in lunarvimg config
     name = "plugins",
     a = { "<cmd>Telescope<cr>", "Telescope" },  -- command pallet == pa
-    o = { "o<esc>p", "past in new line" }, 
   },
   -- k means up so you should wait for popup after pressing <leader>
   k={
@@ -284,14 +299,14 @@ wk.register({
     name="jump",
     -- va{ and va{V very powerful selection ==> visual mode: aB , aBV
     -- easy motion flash.nvim: f+F [jump next] t+T [jump before] ;+, [repeat] another jumps are { % } 
-    p={"%", "%"}, --pranteses
+    a={"%", "%"}, -- around pranteses
     h = { "^", "^" }, --0
-    l = { "g_", "g_" }, --$
+    g = { "g_", "g_" }, --$
     j={function() require('flash').jump() end, "flash jump"},
-    k={function() require('flash').treesitter() end, "flash treesitter"},
-    t={function() require('flash').treesitter_search() end, "flash treesitter search"},
+    k={function() require('flash').treesitter() end, "flash treesitter"},   -- select current block
+    l={function() require('flash').treesitter_search() end, "flash treesitter search"},  -- select all blocks
     -- nvim-surround: ys{motion}{char}, ds{char}, cs{target}{replacement}
-    -- Old text                    Command         New text
+    -- Old text                    Command         New text         
     -- -------------ssss----------) } ] > " ==alias==> b B r a q------------------------
     --     surr*ound_words             ysiw) or ysiw(          (surround_words with space and nospace)
     --     *make strings               ys$"            "make strings"
@@ -388,18 +403,18 @@ lvim.builtin.which_key.mappings["b"] = {
     p = { "<cmd>BufferLineTogglePin<cr>", "Pin"},  -- pin buffer
     f = { "<cmd>Telescope buffers previewer=false<cr>", "Find" },
     j = {"<cmd>BufferLinePick<cr>", "Jump"},
-    b = { "<cmd>BufferLineCyclePrev<cr>", "Previous" },
-    n = { "<cmd>BufferLineCycleNext<cr>", "Next" },
-    h = { "<cmd>BufferLineMovePrev<cr>", "move to prev" },
-    l = { "<cmd>BufferLineMoveNext<cr>", "move to next" },
+    h = { "<cmd>BufferLineCyclePrev<cr>", "Previous" },
+    l = { "<cmd>BufferLineCycleNext<cr>", "Next" },
+    ["<"]= { "<cmd>BufferLineMovePrev<cr>", "move to prev" },
+    [">"] = { "<cmd>BufferLineMoveNext<cr>", "move to next" },
     H = { "<cmd>BufferLineCloseLeft<cr>", "Close all to the left" },
     L = {"<cmd>BufferLineCloseRight<cr>","Close all to the right"},
     S = {"<cmd>BufferLineSortByExtension<cr>","Sort by extention"},
     D = {"<cmd>BufferLineSortByDirectory<cr>","Sort by directory"},
     w = { "<cmd>noautocmd w<cr>", "Save without formatting (noautocmd)" },
     g = {"<cmd>BufferLinePickClose<cr>","Pick which buffer to close",},
-    e = {"<cmd>cd %:h<CR>","cd"},
-    E = {"<cmd>set autochdir!<CR>","autochdir"} --toggle
+    e = {"<cmd>cd %:h<CR>","make root current"},
+    E = {"<cmd>set autochdir!<CR>","toggle autochdir"} 
 }
 
 lvim.builtin.which_key.mappings[";"] = {

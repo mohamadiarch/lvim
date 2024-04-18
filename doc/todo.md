@@ -1,4 +1,5 @@
 
+
 ## TODO
 
 snippet files
@@ -8,10 +9,14 @@ command line copy past
 open files and buffers
 reopen file
 -----------------
+/typeddjango/django-stubs
 auto close html tags
+slow buffer
 colorize color names in fiels
 vimux ===> multiple terminal
+lsp and formatter for all langs
 lsp clear
+nerdtree-git-plugin, vim-devicons, vim-nerdtree-syntax-highlight, and nerdtree-buffer-ops.
 https://github.com/nvim-tree/nvim-tree.lua/issues/2031
 file manager multiple delete + copy and cut
 doc telescope lunarvim

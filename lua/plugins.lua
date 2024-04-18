@@ -54,6 +54,9 @@ lvim.plugins={
     end,
   },
   "ellisonleao/glow.nvim",   -- you should install glow -- windows: choco install glow
+  "windwp/nvim-ts-autotag",   -- auto-rename and auto-close tag
+  "preservim/nerdtree",
+'rmagatti/goto-preview',
   {
     "kylechui/nvim-surround", -- ys{motion}{char}, ds{char}, cs{target}{replacement}
     version = "*", -- Use for stability; omit to use `main` branch for the latest features

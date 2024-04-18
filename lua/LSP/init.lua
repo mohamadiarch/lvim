@@ -17,6 +17,11 @@ lspconfig.emmet_ls.setup({
     "tsx",
   },
 })
+
+--------------------vim-close-tag--------------
+
+--
+
 -- snippets------------
 
 -- require('telescope').load_extension('luasnip')
